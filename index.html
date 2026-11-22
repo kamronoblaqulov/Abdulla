@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="uz" translate="no" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google" content="notranslate" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title translate="no">Brend Nomi — Choy & Kofe Menyusi</title>
+  <style>
+    /* =========================================================
+       1. PREMIUM RANG PALITRASI (ESPRESSO & GOLD LUXURY)
+       ========================================================= */
+    :root {
+      --bg-base: #070606;
+      --bg-surface: rgba(20, 17, 15, 0.72);
+      --bg-card: linear-gradient(145deg, rgba(34, 28, 24, 0.75), rgba(18, 15, 13, 0.85));
+      --bg-card-hover: linear-gradient(145deg, rgba(48, 39, 32, 0.85), rgba(25, 20, 17, 0.92));
+      --bg-glass: rgba(16, 13, 12, 0.82);
+      --border-subtle: rgba(255, 235, 205, 0.08);
+      --border-gold: rgba(217, 155, 78, 0.35);
+      --text-primary: #fdf8f3;
+      --text-secondary: #a89b8c;
+      --accent: #e09f45;
+      --accent-bright: #f7be6d;
+      --accent-glow: rgba(224, 159, 69, 0.32);
+      --shadow-card: 0 20px 45px -15px rgba(0, 0, 0, 0.8);
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f7f3ee;
+      --bg-surface: rgba(255, 252, 248, 0.85);
+      --bg-card: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 241, 233, 0.88));
+      --bg-card-hover: linear-gradient(145deg, #ffffff, #f3e8db);
+      --bg-glass: rgba(255, 252, 248, 0.88);
+      --border-subtle: rgba(66, 44, 24, 0.09);
+      --border-gold: rgba(184, 115, 36, 0.35);
+      --text-primary: #1f1712;
+      --text-secondary: #6e5d4f;
+      --accent: #b87324;
+      --accent-bright: #d98a2b;
+      --accent-glow: rgba(184, 115, 36, 0.22);
+      --shadow-card: 0 18px 40px -15px rgba(66, 44, 24, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       2. BOY VA CHUQUR ORQA FON
+       ========================================================= */
+    .luxury-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(224, 159, 69, 0.18), transparent 55%),
+        radial-gradient(circle at 85% 35%, rgba(146, 64, 14, 0.14), transparent 50%),
+        radial-gradient(circle at 15% 75%, rgba(180, 110, 45, 0.12), transparent 55%);
+    }
+
+    .glow-sphere {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(85px);
+      will-change: transform;
+      animation: drift 20s infinite alternate ease-in-out;
+    }
+
+    .sphere-1 {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(224, 159, 69, 0.24), transparent 70%);
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .sphere-2 {
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(194, 98, 42, 0.18), transparent 70%);
+      bottom: 5%;
+      right: -80px;
+      animation-delay: -7s;
+    }
+
+    .sphere-3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(245, 190, 109, 0.14), transparent 70%);
+      top: 42%;
+      left: -90px;
+      animation-delay: -13s;
+    }
+
+    .pattern-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--border-subtle) 1.2px, transparent 1.2px);
+      background-size: 26px 26px;
+      -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 82%);
+      mask-image: radial-gradient(ellipse at center, black 35%, transparent 82%);
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(25px, 35px) scale(1.12); }
+    }
+
+    /* =========================================================
+       3. ASOSIY KONTEYNER VA VIZITKA
+       ========================================================= */
+    .app-shell {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 18px 16px 110px;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 12px #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.8); opacity: 0.45; }
+    }
+
+    .theme-switch {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      color: var(--accent-bright);
+      font-size: 17px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .theme-switch:hover {
+      border-color: var(--border-gold);
+      transform: translateY(-1px);
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 28px;
+      padding: 26px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(24px);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--accent-bright), transparent);
+      opacity: 0.75;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand-emblem {
+      width: 74px;
+      height: 74px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--accent-bright), #9a4e12);
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      font-weight: 900;
+      color: #140c05;
+      flex-shrink: 0;
+      box-shadow: 0 12px 28px var(--accent-glow), inset 0 1px 1px rgba(255,255,255,0.5);
+      position: relative;
+    }
+
+    .brand-details h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      background: linear-gradient(90deg, var(--text-primary), var(--accent-bright));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    [data-theme="light"] .brand-details h1 {
+      background: none;
+      -webkit-text-fill-color: var(--text-primary);
+    }
+
+    .brand-sub {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-bottom: 7px;
+    }
+
+    .brand-loc {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent-bright);
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .action-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 6px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+
+    [data-theme="light"] .action-tile {
+      background: rgba(66, 44, 24, 0.04);
+    }
+
+    .action-tile:hover {
+      border-color: var(--border-gold);
+      background: rgba(224, 159, 69, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .action-tile:active {
+      transform: scale(0.95);
+    }
+
+    .tile-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(224, 159, 69, 0.22), rgba(224, 159, 69, 0.06));
+      border: 1px solid rgba(224, 159, 69, 0.25);
+      color: var(--accent-bright);
+      display: grid;
+      place-items: center;
+    }
+
+    /* =========================================================
+       4. QIDIRUV VA KATEGORIYALAR
+       ========================================================= */
+    .filter-dock {
+      position: sticky;
+      top: 12px;
+      z-index: 25;
+      padding: 12px;
+      border-radius: 22px;
+      background: var(--bg-glass);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+      margin-bottom: 20px;
+    }
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      pointer-events: none;
+    }
+
+    .search-field {
+      width: 100%;
+      padding: 12px 14px 12px 42px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(125, 125, 125, 0.07);
+      color: var(--text-primary);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-field:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .tab-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .tab-btn {
+      padding: 10px 12px;
+      border-radius: 13px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--border-gold);
+      color: var(--text-primary);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+      color: #170e05;
+      border-color: transparent;
+      box-shadow: 0 6px 18px var(--accent-glow);
+    }
+
+    /* =========================================================
+       5. MENYU KARTOCHKALARI
+       ========================================================= */
+    .list-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 4px 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .drink-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      border-radius: 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+      transition: all 0.24s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .drink-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-gold);
+      transform: translateY(-2px);
+    }
+
+    .drink-visual {
+      width: 78px;
+      height: 78px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(224, 159, 69, 0.25), rgba(30, 22, 16, 0.6));
+      border: 1px solid var(--border-gold);
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    [data-theme="light"] .drink-visual {
+      background: radial-gradient(circle at top left, rgba(224, 159, 69, 0.22), rgba(243, 232, 219, 0.9));
+    }
+
+    .drink-tag {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+      color: #170e05;
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 7px;
+      letter-spacing: 0.02em;
+    }
+
+    .drink-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .drink-name {
+      font-size: 16.5px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+
+    .drink-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .drink-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drink-price {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--accent-bright);
+    }
+
+    .plus-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      border: 1px solid var(--border-gold);
+      background: rgba(224, 159, 69, 0.14);
+      color: var(--accent-bright);
+      font-size: 19px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .plus-btn:hover {
+      background: var(--accent);
+      color: #170e05;
+    }
+
+    .plus-btn:active {
+      transform: scale(0.9);
+    }
+
+    /* =========================================================
+       6. TANLANGANLAR PANELI VA MODAL OYNA
+       ========================================================= */
+    .cart-dock {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(130px);
+      width: calc(100% - 32px);
+      max-width: 548px;
+      padding: 15px 20px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+      color: #170e05;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 16px 36px var(--accent-glow);
+      cursor: pointer;
+      z-index: 40;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .cart-dock.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      z-index: 50;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .sheet-box {
+      width: 100%;
+      max-width: 580px;
+      background: var(--bg-base);
+      border-top: 1px solid var(--border-gold);
+      border-radius: 30px 30px 0 0;
+      padding: 22px 22px 34px;
+      animation: riseUp 0.28s ease-out;
+    }
+
+    @keyframes riseUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .sheet-bar {
+      width: 44px;
+      height: 4px;
+      border-radius: 99px;
+      background: var(--border-gold);
+      margin: 0 auto 18px;
+    }
+
+    .share-link-box {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .share-link-input {
+      flex: 1;
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      font-size: 13px;
+      outline: none;
+    }
+
+    .copy-action-btn {
+      padding: 11px 16px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent);
+      color: #170e05;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .toast-msg {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-90px);
+      background: var(--accent-bright);
+      color: #170e05;
+      padding: 10px 20px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 800;
+      z-index: 60;
+      transition: transform 0.3s ease;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .toast-msg.visible {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body translate="no">
+
+  <!-- BOY ORQA FON -->
+  <div class="luxury-backdrop">
+    <div class="pattern-overlay"></div>
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+    <div class="glow-sphere sphere-3"></div>
+  </div>
+
+  <!-- BILDIRISHNOMA -->
+  <div id="toast" class="toast-msg">Havola nusxalandi!</div>
+
+  <div class="app-shell">
+    <!-- YUQORI PANEL -->
+    <div class="top-nav">
+      <div class="live-badge">
+        <span class="pulse-dot"></span>
+        <span id="workHoursText">Ochiq • 09:00 – 23:00</span>
+      </div>
+      <button type="button" class="theme-switch" id="themeToggle" title="Mavzuni almashtirish">☀️</button>
+    </div>
+
+    <!-- VIZITKA KARTOCHKASI -->
+    <header class="hero-card">
+      <div class="hero-top">
+        <div class="brand-emblem" id="bizLogo">☕</div>
+        <div class="brand-details">
+          <h1 id="bizName">Brend Nomi</h1>
+          <p class="brand-sub" id="bizTagline">Saralangan choy va yangi qovurilgan kofe maskani</p>
+          <div class="brand-loc" id="bizAddress">📍 Markaziy ko‘cha, 1-uy</div>
+        </div>
+      </div>
+
+      <!-- 4 TA TEZKOR TUGMA -->
+      <div class="action-grid">
+        <a href="#" id="btnCall" class="action-tile">
+          <span class="tile-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>Qo‘ng‘iroq</span>
+        </a>
+        <a href="#" id="btnTelegram" target="_blank" rel="noopener" class="action-tile">
+          <span class="tile-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </span>
+          <span>Telegram</span>
+        </a>
+        <a href="#" id="btnMap" target="_blank" rel="noopener" class="action-tile">
+          <span class="tile-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span>Xarita</span>
+        </a>
+        <button type="button" id="btnShare" class="action-tile" onclick="handleShareClick(event)">
+          <span class="tile-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
+          </span>
+          <span translate="no">Ulashish</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- QIDIRUV VA KATEGORIYALAR -->
+    <div class="filter-dock">
+      <div class="search-wrap">
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+        </svg>
+        <input type="text" id="searchInput" class="search-field" placeholder="Choy yoki kofe nomini yozing..." />
+      </div>
+      <div class="tab-row" id="categoryBar"></div>
+    </div>
+
+    <!-- MENYU RO'YXATI -->
+    <div class="list-header">
+      <span id="currentCategoryTitle">Barcha ichimliklar</span>
+      <span id="itemsCount">0 ta</span>
+    </div>
+    <main class="menu-list" id="menuContainer"></main>
+  </div>
+
+  <!-- TANLANGANLAR PANELI -->
+  <div class="cart-dock" id="floatingCart">
+    <div>
+      <strong id="cartCount" style="font-size: 15px;">0 ta tanlandi</strong>
+      <div style="font-size: 12px; font-weight: 600; opacity: 0.85;">Tanlanganlarni ko‘rish</div>
+    </div>
+    <div style="font-size: 17px; font-weight: 900;" id="cartTotal">0 so‘m</div>
+  </div>
+
+  <!-- MODAL OYNA -->
+  <div class="modal-overlay" id="modalBackdrop">
+    <div class="sheet-box" id="modalContent"></div>
+  </div>
+
+  <script>
+    /* =========================================================================
+       MIJOZ MA'LUMOTLARI (FAQAT CHOY VA KOFE)
+       ========================================================================= */
+    const APP_DATA = {
+      brand: {
+        name: "Brend Nomi",
+        logoText: "☕",
+        tagline: "Saralangan choy va yangi qovurilgan kofe maskani",
+        workHours: "Ochiq • 09:00 – 23:00",
+        address: "📍 Markaziy ko‘cha, 1-uy",
+        phone: "+998901234567",
+        telegram: "https://t.me/username",
+        mapUrl: "https://maps.google.com",
+        currency: "so‘m"
+      },
+      categories: [
+        { id: "all", name: "Hammasi", icon: "✨" },
+        { id: "tea", name: "Choy", icon: "🫖" },
+        { id: "coffee", name: "Kofe", icon: "☕" }
+      ],
+      items: [
+        {
+          id: 1,
+          category: "coffee",
+          title: "Espresso",
+          desc: "100% Arabica donlaridan tayyorlangan klassik achchiq va xushbo‘y kofe.",
+          price: 18000,
+          icon: "☕",
+          badge: "Klassik"
+        },
+        {
+          id: 2,
+          category: "coffee",
+          title: "Kapuchino",
+          desc: "Yumshoq sut ko‘pigi va boy espresso uyg‘unligi.",
+          price: 25000,
+          icon: "🥛",
+          badge: "Top"
+        },
+        {
+          id: 3,
+          category: "coffee",
+          title: "Latte",
+          desc: "Ko‘p sutli mayin va yoqimli ta’mga ega kofe ichimligi.",
+          price: 26000,
+          icon: "🤎",
+          badge: ""
+        },
+        {
+          id: 4,
+          category: "tea",
+          title: "Ko‘k choy (choynak)",
+          desc: "Yuqori navli saralangan ko‘k choy barglaridan damlangan.",
+          price: 12000,
+          icon: "🍵",
+          badge: ""
+        },
+        {
+          id: 5,
+          category: "tea",
+          title: "Limon va yalpizli choy",
+          desc: "Yangi uzilgan yalpiz, limon bo‘laklari va asal bilan damlangan maxsus choy.",
+          price: 22000,
+          icon: "🍋",
+          badge: "Tavsiya"
+        },
+        {
+          id: 6,
+          category: "tea",
+          title: "Mevali rezavor choy",
+          desc: "Malina, qorag‘at va tog‘ giyohlaridan tayyorlangan xushbo‘y choy.",
+          price: 28000,
+          icon: "🫖",
+          badge: "Yangi"
+        }
+      ]
+    };
+
+    /* =========================================================================
+       ILOVA MANTIQI
+       ========================================================================= */
+    let activeCategory = "all";
+    let searchQuery = "";
+    let selectedItems = {};
+
+    const formatPrice = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + APP_DATA.brand.currency;
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2400);
+    }
+
+    function copyTextFallback(text) {
+      const tempInput = document.createElement("textarea");
+      tempInput.value = text;
+      tempInput.style.position = "fixed";
+      tempInput.style.opacity = "0";
+      document.body.appendChild(tempInput);
+      tempInput.focus();
+      tempInput.select();
+      let success = false;
+      try {
+        success = document.execCommand("copy");
+      } catch (err) {
+        success = false;
+      }
+      document.body.removeChild(tempInput);
+      return success;
+    }
+
+    function openShareModal() {
+      const url = window.location.href;
+      const shareText = encodeURIComponent(APP_DATA.brand.name + " — " + APP_DATA.brand.tagline);
+      const encodedUrl = encodeURIComponent(url);
+
+      document.getElementById("modalContent").innerHTML = `
+        <div class="sheet-bar"></div>
+        <h3 style="font-size:19px; font-weight:800; margin-bottom:6px;">Menyuni ulashish</h3>
+        <p style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">
+          Havolani nusxalang yoki Telegram orqali yuboring:
+        </p>
+        <div class="share-link-box">
+          <input type="text" id="shareUrlInput" class="share-link-input" value="${url}" readonly />
+          <button type="button" class="copy-action-btn" id="manualCopyBtn">Nusxalash</button>
+        </div>
+        <a href="https://t.me/share/url?url=${encodedUrl}&text=${shareText}" target="_blank" rel="noopener"
+           style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:12px; padding:13px; border-radius:14px; background:#24A1DE; color:#fff; text-decoration:none; font-weight:700; font-size:14px;">
+          ✈️ Telegram orqali yuborish
+        </a>
+      `;
+      document.getElementById("modalBackdrop").classList.add("open");
+
+      document.getElementById("manualCopyBtn").addEventListener("click", () => {
+        const input = document.getElementById("shareUrlInput");
+        input.select();
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(url).then(() => showToast("Havola nusxalandi!"));
+        } else {
+          copyTextFallback(url);
+          showToast("Havola nusxalandi!");
+        }
+      });
+    }
+
+    function handleShareClick(e) {
+      if (e) e.preventDefault();
+      const url = window.location.href;
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).catch(() => copyTextFallback(url));
+      } else {
+        copyTextFallback(url);
+      }
+      openShareModal();
+      showToast("Havola tayyorlandi!");
+    }
+
+    function initBrand() {
+      const b = APP_DATA.brand;
+      document.title = b.name + " — Choy & Kofe Menyusi";
+      document.getElementById("bizName").textContent = b.name;
+      document.getElementById("bizLogo").textContent = b.logoText;
+      document.getElementById("bizTagline").textContent = b.tagline;
+      document.getElementById("workHoursText").textContent = b.workHours;
+      document.getElementById("bizAddress").textContent = b.address;
+      document.getElementById("btnCall").href = "tel:" + b.phone;
+      document.getElementById("btnTelegram").href = b.telegram;
+      document.getElementById("btnMap").href = b.mapUrl;
+    }
+
+    function renderCategories() {
+      const bar = document.getElementById("categoryBar");
+      bar.innerHTML = APP_DATA.categories.map(cat => `
+        <button type="button" class="tab-btn ${cat.id === activeCategory ? "active" : ""}" data-id="${cat.id}">
+          <span>${cat.icon}</span>
+          <span>${cat.name}</span>
+        </button>
+      `).join("");
+
+      bar.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeCategory = btn.dataset.id;
+          const catObj = APP_DATA.categories.find(c => c.id === activeCategory);
+          document.getElementById("currentCategoryTitle").textContent =
+            activeCategory === "all" ? "Barcha ichimliklar" : catObj.name + " menyusi";
+          renderCategories();
+          renderMenu();
+        });
+      });
+    }
+
+    function renderMenu() {
+      const container = document.getElementById("menuContainer");
+      const filtered = APP_DATA.items.filter(item => {
+        const matchCat = activeCategory === "all" || item.category === activeCategory;
+        const matchQuery = item.title.toLowerCase().includes(searchQuery) ||
+                           item.desc.toLowerCase().includes(searchQuery);
+        return matchCat && matchQuery;
+      });
+
+      document.getElementById("itemsCount").textContent = filtered.length + " ta";
+
+      if (!filtered.length) {
+        container.innerHTML = `<div style="text-align:center; padding:42px 20px; color:var(--text-secondary);">Hech narsa topilmadi ☕</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <article class="drink-card" onclick="openItemModal(${item.id})">
+          <div class="drink-visual">
+            ${item.badge ? `<span class="drink-tag">${item.badge}</span>` : ""}
+            <span>${item.icon}</span>
+          </div>
+          <div class="drink-info">
+            <h3 class="drink-name">${item.title}</h3>
+            <p class="drink-desc">${item.desc}</p>
+            <div class="drink-bottom">
+              <span class="drink-price">${formatPrice(item.price)}</span>
+              <button type="button" class="plus-btn" onclick="event.stopPropagation(); addToCart(${item.id})" aria-label="Qo'shish">+</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function addToCart(id) {
+      selectedItems[id] = (selectedItems[id] || 0) + 1;
+      updateCartBar();
+      showToast("Tanlanganlarga qo‘shildi");
+    }
+
+    function updateCartBar() {
+      let count = 0;
+      let total = 0;
+      for (const [id, qty] of Object.entries(selectedItems)) {
+        const item = APP_DATA.items.find(i => i.id == id);
+        if (item && qty > 0) {
+          count += qty;
+          total += item.price * qty;
+        }
+      }
+      const bar = document.getElementById("floatingCart");
+      if (count > 0) {
+        document.getElementById("cartCount").textContent = count + " ta tanlandi";
+        document.getElementById("cartTotal").textContent = formatPrice(total);
+        bar.classList.add("show");
+      } else {
+        bar.classList.remove("show");
+      }
+    }
+
+    function openItemModal(id) {
+      const item = APP_DATA.items.find(i => i.id === id);
+      if (!item) return;
+      document.getElementById("modalContent").innerHTML = `
+        <div class="sheet-bar"></div>
+        <div style="text-align:center; font-size:58px; margin-bottom:10px;">${item.icon}</div>
+        <h2 style="font-size:21px; font-weight:800; margin-bottom:6px; text-align:center;">${item.title}</h2>
+        <p style="color:var(--text-secondary); font-size:14px; text-align:center; margin-bottom:20px;">${item.desc}</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:16px; border-top:1px solid var(--border-subtle);">
+          <strong style="font-size:19px; color:var(--accent-bright);">${formatPrice(item.price)}</strong>
+          <button type="button" onclick="addToCart(${item.id}); closeModal();" style="padding:12px 24px; border-radius:14px; border:none; background:linear-gradient(135deg, var(--accent-bright), var(--accent)); color:#170e05; font-weight:800; cursor:pointer;">
+            + Tanlash
+          </button>
+        </div>
+      `;
+      document.getElementById("modalBackdrop").classList.add("open");
+    }
+
+    function openCartModal() {
+      const entries = Object.entries(selectedItems).filter(([, qty]) => qty > 0);
+      if (!entries.length) return;
+      let total = 0;
+      const rows = entries.map(([id, qty]) => {
+        const item = APP_DATA.items.find(i => i.id == id);
+        total += item.price * qty;
+        return `
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--border-subtle);">
+            <div>
+              <div style="font-weight:700; font-size:15px;">${item.icon} ${item.title}</div>
+              <div style="font-size:12.5px; color:var(--text-secondary);">${qty} × ${formatPrice(item.price)}</div>
+            </div>
+            <button type="button" onclick="removeOne(${item.id})" style="width:32px; height:32px; border-radius:10px; border:1px solid var(--border-gold); background:transparent; color:var(--text-primary); font-weight:700; cursor:pointer;">−</button>
+          </div>
+        `;
+      }).join("");
+
+      document.getElementById("modalContent").innerHTML = `
+        <div class="sheet-bar"></div>
+        <h3 style="font-size:19px; font-weight:800; margin-bottom:12px;">Tanlangan ichimliklar</h3>
+        <div style="max-height:45vh; overflow-y:auto;">${rows}</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+          <span style="color:var(--text-secondary); font-weight:700;">Jami summa:</span>
+          <strong style="font-size:19px; color:var(--accent-bright);">${formatPrice(total)}</strong>
+        </div>
+      `;
+      document.getElementById("modalBackdrop").classList.add("open");
+    }
+
+    function removeOne(id) {
+      if (selectedItems[id] > 1) selectedItems[id]--;
+      else delete selectedItems[id];
+      updateCartBar();
+      if (Object.keys(selectedItems).length) openCartModal();
+      else closeModal();
+    }
+
+    function closeModal() {
+      document.getElementById("modalBackdrop").classList.remove("open");
+    }
+
+    document.getElementById("modalBackdrop").addEventListener("click", (e) => {
+      if (e.target.id === "modalBackdrop") closeModal();
+    });
+
+    document.getElementById("floatingCart").addEventListener("click", openCartModal);
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      renderMenu();
+    });
+
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const html = document.documentElement;
+      const isDark = html.getAttribute("data-theme") === "dark";
+      html.setAttribute("data-theme", isDark ? "light" : "dark");
+      document.getElementById("themeToggle").textContent = isDark ? "🌙" : "☀️";
+    });
+
+    initBrand();
+    renderCategories();
+    renderMenu();
+  </script>
+</body>
+</html>
