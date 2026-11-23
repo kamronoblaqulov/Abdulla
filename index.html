@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title translate="no">Brend Nomi — Choy & Kofe Menyusi</title>
   <style>
-    /* =========================================================
-       1. PREMIUM RANG PALITRASI (ESPRESSO & GOLD LUXURY)
-       ========================================================= */
     :root {
       --bg-base: #070606;
       --bg-surface: rgba(20, 17, 15, 0.72);
@@ -41,7 +38,7 @@
       --shadow-card: 0 18px 40px -15px rgba(66, 44, 24, 0.14);
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -58,9 +55,6 @@
       line-height: 1.5;
     }
 
-    /* =========================================================
-       2. BOY VA CHUQUR ORQA FON
-       ========================================================= */
     .luxury-backdrop {
       position: fixed;
       inset: 0;
@@ -122,9 +116,6 @@
       100% { transform: translate(25px, 35px) scale(1.12); }
     }
 
-    /* =========================================================
-       3. ASOSIY KONTEYNER VA VIZITKA
-       ========================================================= */
     .app-shell {
       max-width: 580px;
       margin: 0 auto;
@@ -136,36 +127,84 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
+      gap: 10px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .live-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 14px;
+      padding: 8px 15px;
       border-radius: 999px;
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px);
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+      transition: all 0.25s ease;
+    }
+
+    .live-badge.is-open {
+      border-color: rgba(34, 197, 94, 0.45);
+      color: #4ade80;
+    }
+
+    .live-badge.is-closed {
+      border-color: rgba(239, 68, 68, 0.55);
+      background: rgba(127, 29, 29, 0.28);
+      color: #f87171;
+      box-shadow: 0 0 18px rgba(239, 68, 68, 0.22);
     }
 
     .pulse-dot {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: #22c55e;
       box-shadow: 0 0 12px #22c55e;
       animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    .pulse-dot.closed {
+      background: #ef4444;
+      box-shadow: 0 0 12px #ef4444;
+      animation: none;
     }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(0.8); opacity: 0.45; }
+    }
+
+    .admin-pill {
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+
+    .admin-pill:hover,
+    .admin-pill.active-admin {
+      border-color: var(--border-gold);
+      color: var(--accent-bright);
     }
 
     .theme-switch {
@@ -231,7 +270,6 @@
       color: #140c05;
       flex-shrink: 0;
       box-shadow: 0 12px 28px var(--accent-glow), inset 0 1px 1px rgba(255,255,255,0.5);
-      position: relative;
     }
 
     .brand-details h1 {
@@ -300,10 +338,6 @@
       transform: translateY(-2px);
     }
 
-    .action-tile:active {
-      transform: scale(0.95);
-    }
-
     .tile-icon {
       width: 38px;
       height: 38px;
@@ -315,9 +349,6 @@
       place-items: center;
     }
 
-    /* =========================================================
-       4. QIDIRUV VA KATEGORIYALAR
-       ========================================================= */
     .filter-dock {
       position: sticky;
       top: 12px;
@@ -385,11 +416,6 @@
       gap: 6px;
     }
 
-    .tab-btn:hover {
-      border-color: var(--border-gold);
-      color: var(--text-primary);
-    }
-
     .tab-btn.active {
       background: linear-gradient(135deg, var(--accent-bright), var(--accent));
       color: #170e05;
@@ -397,9 +423,6 @@
       box-shadow: 0 6px 18px var(--accent-glow);
     }
 
-    /* =========================================================
-       5. MENYU KARTOCHKALARI
-       ========================================================= */
     .list-header {
       display: flex;
       justify-content: space-between;
@@ -450,6 +473,13 @@
       font-size: 34px;
       flex-shrink: 0;
       position: relative;
+      overflow: hidden;
+    }
+
+    .drink-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     [data-theme="light"] .drink-visual {
@@ -466,7 +496,7 @@
       font-weight: 800;
       padding: 2px 7px;
       border-radius: 7px;
-      letter-spacing: 0.02em;
+      z-index: 2;
     }
 
     .drink-info {
@@ -516,7 +546,6 @@
       display: grid;
       place-items: center;
       cursor: pointer;
-      transition: all 0.18s ease;
     }
 
     .plus-btn:hover {
@@ -524,13 +553,6 @@
       color: #170e05;
     }
 
-    .plus-btn:active {
-      transform: scale(0.9);
-    }
-
-    /* =========================================================
-       6. TANLANGANLAR PANELI VA MODAL OYNA
-       ========================================================= */
     .cart-dock {
       position: fixed;
       bottom: 18px;
@@ -579,6 +601,8 @@
       border-radius: 30px 30px 0 0;
       padding: 22px 22px 34px;
       animation: riseUp 0.28s ease-out;
+      max-height: 85vh;
+      overflow-y: auto;
     }
 
     @keyframes riseUp {
@@ -622,6 +646,99 @@
       cursor: pointer;
     }
 
+    .admin-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 390px;
+      height: 100vh;
+      background: var(--bg-base);
+      border-left: 1px solid var(--border-gold);
+      box-shadow: -16px 0 40px rgba(0, 0, 0, 0.55);
+      z-index: 55;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      padding: 20px 18px 32px;
+      overflow-y: auto;
+    }
+
+    .admin-drawer.open {
+      transform: translateX(0);
+    }
+
+    .admin-field {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(125, 125, 125, 0.08);
+      color: var(--text-primary);
+      font-size: 13.5px;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .photo-picker-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px dashed var(--border-gold);
+      background: rgba(224, 159, 69, 0.06);
+      margin-bottom: 10px;
+    }
+
+    .photo-preview-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.25);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .photo-preview-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .admin-row-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.02);
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .admin-mini-btn {
+      padding: 6px 10px;
+      border-radius: 9px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(224, 159, 69, 0.14);
+      color: var(--accent-bright);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .admin-mini-btn.danger {
+      background: rgba(239, 68, 68, 0.14);
+      color: #f87171;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
     .toast-msg {
       position: fixed;
       top: 18px;
@@ -633,7 +750,7 @@
       border-radius: 99px;
       font-size: 13px;
       font-weight: 800;
-      z-index: 60;
+      z-index: 70;
       transition: transform 0.3s ease;
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
     }
@@ -645,7 +762,6 @@
 </head>
 <body translate="no">
 
-  <!-- BOY ORQA FON -->
   <div class="luxury-backdrop">
     <div class="pattern-overlay"></div>
     <div class="glow-sphere sphere-1"></div>
@@ -653,20 +769,20 @@
     <div class="glow-sphere sphere-3"></div>
   </div>
 
-  <!-- BILDIRISHNOMA -->
   <div id="toast" class="toast-msg">Havola nusxalandi!</div>
 
   <div class="app-shell">
-    <!-- YUQORI PANEL -->
     <div class="top-nav">
-      <div class="live-badge">
-        <span class="pulse-dot"></span>
-        <span id="workHoursText">Ochiq • 09:00 – 23:00</span>
+      <div class="live-badge is-closed" id="statusBadge">
+        <span class="pulse-dot closed" id="statusDot"></span>
+        <span id="workHoursText">Yopiq • 09:00 – 23:00</span>
       </div>
-      <button type="button" class="theme-switch" id="themeToggle" title="Mavzuni almashtirish">☀️</button>
+      <div class="top-actions">
+        <button type="button" class="admin-pill" id="adminOpenBtn" title="Admin panel">Admin</button>
+        <button type="button" class="theme-switch" id="themeToggle" title="Mavzuni almashtirish">☀️</button>
+      </div>
     </div>
 
-    <!-- VIZITKA KARTOCHKASI -->
     <header class="hero-card">
       <div class="hero-top">
         <div class="brand-emblem" id="bizLogo">☕</div>
@@ -677,7 +793,6 @@
         </div>
       </div>
 
-      <!-- 4 TA TEZKOR TUGMA -->
       <div class="action-grid">
         <a href="#" id="btnCall" class="action-tile">
           <span class="tile-icon">
@@ -706,7 +821,6 @@
       </div>
     </header>
 
-    <!-- QIDIRUV VA KATEGORIYALAR -->
     <div class="filter-dock">
       <div class="search-wrap">
         <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -718,7 +832,6 @@
       <div class="tab-row" id="categoryBar"></div>
     </div>
 
-    <!-- MENYU RO'YXATI -->
     <div class="list-header">
       <span id="currentCategoryTitle">Barcha ichimliklar</span>
       <span id="itemsCount">0 ta</span>
@@ -726,8 +839,7 @@
     <main class="menu-list" id="menuContainer"></main>
   </div>
 
-  <!-- TANLANGANLAR PANELI -->
-  <div class="cart-dock" id="floatingCart">
+  <div class="cart-dock" id="floatingCart" onclick="openCartModal()">
     <div>
       <strong id="cartCount" style="font-size: 15px;">0 ta tanlandi</strong>
       <div style="font-size: 12px; font-weight: 600; opacity: 0.85;">Tanlanganlarni ko‘rish</div>
@@ -735,21 +847,66 @@
     <div style="font-size: 17px; font-weight: 900;" id="cartTotal">0 so‘m</div>
   </div>
 
-  <!-- MODAL OYNA -->
+  <!-- CHETKI ADMIN PANEL -->
+  <aside class="admin-drawer" id="adminDrawer" aria-label="Admin panel">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+      <div>
+        <h3 style="font-size:17px; font-weight:800;">Admin Panel</h3>
+        <div style="font-size:12px; color:var(--text-secondary);">Barcha telefonlarga real vaqtda sinxronlanadi</div>
+      </div>
+      <button type="button" class="admin-mini-btn" onclick="closeAdminDrawer()">Yopish ✕</button>
+    </div>
+
+    <div style="padding:12px; border-radius:16px; border:1px solid var(--border-gold); margin-bottom:14px;">
+      <div style="font-size:13px; font-weight:800; margin-bottom:8px;">Yangi mahsulot qo‘shish</div>
+      <input type="text" id="admTitle" class="admin-field" placeholder="Nomi (masalan: Matcha Latte)" />
+      <input type="number" id="admPrice" class="admin-field" placeholder="Narxi (masalan: 28000)" min="0" step="500" />
+      <select id="admCategory" class="admin-field">
+        <option value="coffee">Kofe</option>
+        <option value="tea">Choy</option>
+      </select>
+
+      <div class="photo-picker-box">
+        <div class="photo-preview-thumb" id="admPhotoPreview">☕</div>
+        <div style="flex:1; min-width:0;">
+          <label for="admPhotoFile" class="admin-mini-btn" style="display:inline-block; margin-bottom:4px;">📷 Galereyadan rasm</label>
+          <input type="file" id="admPhotoFile" accept="image/*" style="display:none;" />
+          <div id="admPhotoLabel" style="font-size:11px; color:var(--text-secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Rasm tanlanmasa emoji ishlatiladi</div>
+        </div>
+        <button type="button" class="admin-mini-btn danger" id="admClearPhotoBtn" style="display:none;" onclick="clearSelectedPhoto()">✕</button>
+      </div>
+
+      <input type="text" id="admIcon" class="admin-field" placeholder="Emoji (masalan: 🍵 yoki ☕)" value="☕" />
+      <input type="text" id="admBadge" class="admin-field" placeholder="Yorliq (ixtiyoriy, masalan: Yangi)" />
+      <input type="text" id="admDesc" class="admin-field" placeholder="Qisqacha tavsifi" />
+      <button type="button" class="copy-action-btn" style="width:100%;" onclick="addMenuItemFromAdmin()">+ Menyuga qo‘shish</button>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <button type="button" class="admin-mini-btn danger" style="width:100%; padding:9px;" onclick="resetDefaultMenu()">Asl menyuga qaytish</button>
+    </div>
+
+    <div style="font-size:13px; font-weight:800; margin-bottom:8px;">Mavjud mahsulotlar</div>
+    <div id="adminItemsList"></div>
+  </aside>
+
   <div class="modal-overlay" id="modalBackdrop">
     <div class="sheet-box" id="modalContent"></div>
   </div>
 
   <script>
-    /* =========================================================================
-       MIJOZ MA'LUMOTLARI (FAQAT CHOY VA KOFE)
-       ========================================================================= */
-    const APP_DATA = {
+    const ADMIN_CODE = "admin123";
+    const FIREBASE_DB_URL = "https://abdulla-cafe-default-rtdb.firebaseio.com";
+    const STORAGE_KEY = "abdulla_cafe_menu_cache_v3";
+
+    const DEFAULT_DATA = {
       brand: {
         name: "Brend Nomi",
         logoText: "☕",
         tagline: "Saralangan choy va yangi qovurilgan kofe maskani",
-        workHours: "Ochiq • 09:00 – 23:00",
+        openHour: 9,
+        closeHour: 23,
+        hoursLabel: "09:00 – 23:00",
         address: "📍 Markaziy ko‘cha, 1-uy",
         phone: "+998901234567",
         telegram: "https://t.me/username",
@@ -769,6 +926,7 @@
           desc: "100% Arabica donlaridan tayyorlangan klassik achchiq va xushbo‘y kofe.",
           price: 18000,
           icon: "☕",
+          image: "",
           badge: "Klassik"
         },
         {
@@ -778,6 +936,7 @@
           desc: "Yumshoq sut ko‘pigi va boy espresso uyg‘unligi.",
           price: 25000,
           icon: "🥛",
+          image: "",
           badge: "Top"
         },
         {
@@ -787,6 +946,7 @@
           desc: "Ko‘p sutli mayin va yoqimli ta’mga ega kofe ichimligi.",
           price: 26000,
           icon: "🤎",
+          image: "",
           badge: ""
         },
         {
@@ -796,6 +956,7 @@
           desc: "Yuqori navli saralangan ko‘k choy barglaridan damlangan.",
           price: 12000,
           icon: "🍵",
+          image: "",
           badge: ""
         },
         {
@@ -805,6 +966,7 @@
           desc: "Yangi uzilgan yalpiz, limon bo‘laklari va asal bilan damlangan maxsus choy.",
           price: 22000,
           icon: "🍋",
+          image: "",
           badge: "Tavsiya"
         },
         {
@@ -814,25 +976,168 @@
           desc: "Malina, qorag‘at va tog‘ giyohlaridan tayyorlangan xushbo‘y choy.",
           price: 28000,
           icon: "🫖",
+          image: "",
           badge: "Yangi"
         }
       ]
     };
 
-    /* =========================================================================
-       ILOVA MANTIQI
-       ========================================================================= */
+    function loadCachedData() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && Array.isArray(parsed.items)) {
+            return {
+              brand: { ...DEFAULT_DATA.brand, ...(parsed.brand || {}) },
+              categories: DEFAULT_DATA.categories,
+              items: parsed.items
+            };
+          }
+        }
+      } catch (e) {}
+      return JSON.parse(JSON.stringify(DEFAULT_DATA));
+    }
+
+    let APP_DATA = loadCachedData();
     let activeCategory = "all";
     let searchQuery = "";
     let selectedItems = {};
+    let isAdminUnlocked = false;
+    let selectedPhotoDataUrl = "";
 
-    const formatPrice = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + APP_DATA.brand.currency;
+    const formatPrice = (num) => Number(num || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + APP_DATA.brand.currency;
+
+    function updateOpenClosedStatus() {
+      const now = new Date();
+      const currentHour = now.getHours() + now.getMinutes() / 60;
+      const openH = Number(APP_DATA.brand.openHour ?? 9);
+      const closeH = Number(APP_DATA.brand.closeHour ?? 23);
+      const isOpen = currentHour >= openH && currentHour < closeH;
+
+      const badge = document.getElementById("statusBadge");
+      const dot = document.getElementById("statusDot");
+      const text = document.getElementById("workHoursText");
+
+      badge.classList.toggle("is-open", isOpen);
+      badge.classList.toggle("is-closed", !isOpen);
+      dot.classList.toggle("closed", !isOpen);
+      text.textContent = `${isOpen ? "Ochiq" : "Yopiq"} • ${APP_DATA.brand.hoursLabel}`;
+    }
+
+    function renderVisualHtml(item, large = false) {
+      if (item.image) {
+        return `<img src="${item.image}" alt="${item.title}" />`;
+      }
+      return `<span style="${large ? "font-size:58px;" : ""}">${item.icon || "☕"}</span>`;
+    }
 
     function showToast(msg) {
       const toast = document.getElementById("toast");
       toast.textContent = msg;
       toast.classList.add("visible");
       setTimeout(() => toast.classList.remove("visible"), 2400);
+    }
+
+    async function saveToFirebase() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          brand: APP_DATA.brand,
+          items: APP_DATA.items
+        }));
+      } catch (e) {}
+
+      try {
+        const res = await fetch(`${FIREBASE_DB_URL}/menu.json`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            items: APP_DATA.items,
+            updatedAt: Date.now()
+          })
+        });
+        if (!res.ok) {
+          showToast("Firebase Rules (Publish) tekshiring!");
+        }
+      } catch (err) {
+        showToast("Internet yoki baza bilan xatolik!");
+      }
+    }
+
+    async function syncFromFirebase(notify = false) {
+      try {
+        const res = await fetch(`${FIREBASE_DB_URL}/menu.json?t=${Date.now()}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && Array.isArray(data.items)) {
+          APP_DATA.items = data.items;
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({
+              brand: APP_DATA.brand,
+              items: APP_DATA.items
+            }));
+          } catch (e) {}
+          renderMenu();
+          updateCartBar();
+          if (isAdminUnlocked) renderAdminItemsList();
+          if (notify) showToast("Menyu sinxronlandi!");
+        } else if (data === null) {
+          await saveToFirebase();
+        }
+      } catch (err) {}
+    }
+
+    function compressImageFile(file, maxSize = 420, quality = 0.72) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const img = new Image();
+          img.onload = () => {
+            let { width, height } = img;
+            if (width > height && width > maxSize) {
+              height = Math.round((height * maxSize) / width);
+              width = maxSize;
+            } else if (height > maxSize) {
+              width = Math.round((width * maxSize) / height);
+              height = maxSize;
+            }
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          };
+          img.onerror = reject;
+          img.src = ev.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function updatePhotoPreview() {
+      const thumb = document.getElementById("admPhotoPreview");
+      const label = document.getElementById("admPhotoLabel");
+      const clearBtn = document.getElementById("admClearPhotoBtn");
+      const emojiVal = document.getElementById("admIcon").value.trim() || "☕";
+
+      if (selectedPhotoDataUrl) {
+        thumb.innerHTML = `<img src="${selectedPhotoDataUrl}" alt="Rasm" />`;
+        label.textContent = "Galereyadan rasm tanlandi";
+        clearBtn.style.display = "inline-block";
+      } else {
+        thumb.innerHTML = `<span>${emojiVal}</span>`;
+        label.textContent = "Rasm tanlanmasa emoji ishlatiladi";
+        clearBtn.style.display = "none";
+      }
+    }
+
+    function clearSelectedPhoto() {
+      selectedPhotoDataUrl = "";
+      const fileInput = document.getElementById("admPhotoFile");
+      if (fileInput) fileInput.value = "";
+      updatePhotoPreview();
     }
 
     function copyTextFallback(text) {
@@ -843,14 +1148,12 @@
       document.body.appendChild(tempInput);
       tempInput.focus();
       tempInput.select();
-      let success = false;
-      try {
-        success = document.execCommand("copy");
-      } catch (err) {
-        success = false;
-      }
+      try { document.execCommand("copy"); } catch (err) {}
       document.body.removeChild(tempInput);
-      return success;
+    }
+
+    function closeModal() {
+      document.getElementById("modalBackdrop").classList.remove("open");
     }
 
     function openShareModal() {
@@ -887,16 +1190,27 @@
       });
     }
 
-    function handleShareClick(e) {
+    async function handleShareClick(e) {
       if (e) e.preventDefault();
       const url = window.location.href;
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: APP_DATA.brand.name,
+            text: APP_DATA.brand.name + " — " + APP_DATA.brand.tagline,
+            url: url
+          });
+          return;
+        } catch (err) {
+          if (err && err.name === "AbortError") return;
+        }
+      }
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(url).catch(() => copyTextFallback(url));
       } else {
         copyTextFallback(url);
       }
       openShareModal();
-      showToast("Havola tayyorlandi!");
     }
 
     function initBrand() {
@@ -905,11 +1219,11 @@
       document.getElementById("bizName").textContent = b.name;
       document.getElementById("bizLogo").textContent = b.logoText;
       document.getElementById("bizTagline").textContent = b.tagline;
-      document.getElementById("workHoursText").textContent = b.workHours;
       document.getElementById("bizAddress").textContent = b.address;
       document.getElementById("btnCall").href = "tel:" + b.phone;
       document.getElementById("btnTelegram").href = b.telegram;
       document.getElementById("btnMap").href = b.mapUrl;
+      updateOpenClosedStatus();
     }
 
     function renderCategories() {
@@ -938,7 +1252,7 @@
       const filtered = APP_DATA.items.filter(item => {
         const matchCat = activeCategory === "all" || item.category === activeCategory;
         const matchQuery = item.title.toLowerCase().includes(searchQuery) ||
-                           item.desc.toLowerCase().includes(searchQuery);
+                           (item.desc || "").toLowerCase().includes(searchQuery);
         return matchCat && matchQuery;
       });
 
@@ -953,11 +1267,11 @@
         <article class="drink-card" onclick="openItemModal(${item.id})">
           <div class="drink-visual">
             ${item.badge ? `<span class="drink-tag">${item.badge}</span>` : ""}
-            <span>${item.icon}</span>
+            ${renderVisualHtml(item, false)}
           </div>
           <div class="drink-info">
             <h3 class="drink-name">${item.title}</h3>
-            <p class="drink-desc">${item.desc}</p>
+            <p class="drink-desc">${item.desc || ""}</p>
             <div class="drink-bottom">
               <span class="drink-price">${formatPrice(item.price)}</span>
               <button type="button" class="plus-btn" onclick="event.stopPropagation(); addToCart(${item.id})" aria-label="Qo'shish">+</button>
@@ -993,87 +1307,237 @@
       }
     }
 
-    function openItemModal(id) {
-      const item = APP_DATA.items.find(i => i.id === id);
-      if (!item) return;
-      document.getElementById("modalContent").innerHTML = `
-        <div class="sheet-bar"></div>
-        <div style="text-align:center; font-size:58px; margin-bottom:10px;">${item.icon}</div>
-        <h2 style="font-size:21px; font-weight:800; margin-bottom:6px; text-align:center;">${item.title}</h2>
-        <p style="color:var(--text-secondary); font-size:14px; text-align:center; margin-bottom:20px;">${item.desc}</p>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:16px; border-top:1px solid var(--border-subtle);">
-          <strong style="font-size:19px; color:var(--accent-bright);">${formatPrice(item.price)}</strong>
-          <button type="button" onclick="addToCart(${item.id}); closeModal();" style="padding:12px 24px; border-radius:14px; border:none; background:linear-gradient(135deg, var(--accent-bright), var(--accent)); color:#170e05; font-weight:800; cursor:pointer;">
-            + Tanlash
-          </button>
-        </div>
-      `;
-      document.getElementById("modalBackdrop").classList.add("open");
-    }
-
     function openCartModal() {
-      const entries = Object.entries(selectedItems).filter(([, qty]) => qty > 0);
+      const entries = Object.entries(selectedItems)
+        .map(([id, qty]) => ({ item: APP_DATA.items.find(i => i.id == id), qty }))
+        .filter(x => x.item && x.qty > 0);
+
       if (!entries.length) return;
-      let total = 0;
-      const rows = entries.map(([id, qty]) => {
-        const item = APP_DATA.items.find(i => i.id == id);
-        total += item.price * qty;
-        return `
-          <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--border-subtle);">
-            <div>
-              <div style="font-weight:700; font-size:15px;">${item.icon} ${item.title}</div>
-              <div style="font-size:12.5px; color:var(--text-secondary);">${qty} × ${formatPrice(item.price)}</div>
-            </div>
-            <button type="button" onclick="removeOne(${item.id})" style="width:32px; height:32px; border-radius:10px; border:1px solid var(--border-gold); background:transparent; color:var(--text-primary); font-weight:700; cursor:pointer;">−</button>
-          </div>
-        `;
-      }).join("");
+      const total = entries.reduce((sum, x) => sum + x.item.price * x.qty, 0);
 
       document.getElementById("modalContent").innerHTML = `
         <div class="sheet-bar"></div>
         <h3 style="font-size:19px; font-weight:800; margin-bottom:12px;">Tanlangan ichimliklar</h3>
-        <div style="max-height:45vh; overflow-y:auto;">${rows}</div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
-          <span style="color:var(--text-secondary); font-weight:700;">Jami summa:</span>
-          <strong style="font-size:19px; color:var(--accent-bright);">${formatPrice(total)}</strong>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
+          ${entries.map(({ item, qty }) => `
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:14px; border:1px solid var(--border-subtle);">
+              <div>
+                <div style="font-weight:700;">${item.image ? "🖼️" : (item.icon || "☕")} ${item.title}</div>
+                <div style="font-size:12px; color:var(--text-secondary);">${qty} × ${formatPrice(item.price)}</div>
+              </div>
+              <strong style="color:var(--accent-bright);">${formatPrice(item.price * qty)}</strong>
+            </div>
+          `).join("")}
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid var(--border-subtle);">
+          <span style="font-weight:700;">Jami:</span>
+          <strong style="font-size:18px; color:var(--accent-bright);">${formatPrice(total)}</strong>
         </div>
       `;
       document.getElementById("modalBackdrop").classList.add("open");
     }
 
-    function removeOne(id) {
-      if (selectedItems[id] > 1) selectedItems[id]--;
-      else delete selectedItems[id];
+    function openItemModal(id) {
+      const item = APP_DATA.items.find(i => i.id === id);
+      if (!item) return;
+      const visualBox = item.image
+        ? `<img src="${item.image}" alt="${item.title}" style="width:120px; height:120px; object-fit:cover; border-radius:24px; border:1px solid var(--border-gold); margin:0 auto 12px; display:block;" />`
+        : `<div style="text-align:center; font-size:58px; margin-bottom:10px;">${item.icon || "☕"}</div>`;
+
+      document.getElementById("modalContent").innerHTML = `
+        <div class="sheet-bar"></div>
+        ${visualBox}
+        <h2 style="font-size:21px; font-weight:800; margin-bottom:6px; text-align:center;">${item.title}</h2>
+        <p style="color:var(--text-secondary); font-size:14px; text-align:center; margin-bottom:20px;">${item.desc || ""}</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:16px; border-top:1px solid var(--border-subtle);">
+          <strong style="font-size:19px; color:var(--accent-bright);">${formatPrice(item.price)}</strong>
+          <button type="button" onclick="addToCart(${item.id}); closeModal();" style="padding:12px 24px; border-radius:14px; border:none; background:linear-gradient(135deg, var(--accent-bright), var(--accent)); color:#170e05; font-weight:800; font-size:14px; cursor:pointer;">Qo‘shish</button>
+        </div>
+      `;
+      document.getElementById("modalBackdrop").classList.add("open");
+    }
+
+    function openAdminAuthModal() {
+      document.getElementById("modalContent").innerHTML = `
+        <div class="sheet-bar"></div>
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:6px;">Admin kirish</h3>
+        <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">
+          Menyuni boshqarish uchun admin kodini kiriting:
+        </p>
+        <input type="password" id="adminCodeInput" class="admin-field" placeholder="Admin kodini kiriting..." />
+        <button type="button" class="copy-action-btn" style="width:100%;" id="adminLoginBtn">Kirish</button>
+      `;
+      document.getElementById("modalBackdrop").classList.add("open");
+
+      const submitCode = () => {
+        const val = document.getElementById("adminCodeInput").value.trim();
+        if (val === ADMIN_CODE) {
+          isAdminUnlocked = true;
+          document.getElementById("adminOpenBtn").classList.add("active-admin");
+          closeModal();
+          openAdminDrawer();
+          showToast("Admin panel ochildi");
+        } else {
+          showToast("Kod noto‘g‘ri!");
+        }
+      };
+
+      document.getElementById("adminLoginBtn").addEventListener("click", submitCode);
+      document.getElementById("adminCodeInput").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") submitCode();
+      });
+    }
+
+    function openAdminDrawer() {
+      updatePhotoPreview();
+      renderAdminItemsList();
+      document.getElementById("adminDrawer").classList.add("open");
+    }
+
+    function closeAdminDrawer() {
+      document.getElementById("adminDrawer").classList.remove("open");
+    }
+
+    async function addMenuItemFromAdmin() {
+      const title = document.getElementById("admTitle").value.trim();
+      const price = parseInt(document.getElementById("admPrice").value, 10);
+      const category = document.getElementById("admCategory").value;
+      const icon = document.getElementById("admIcon").value.trim() || "☕";
+      const badge = document.getElementById("admBadge").value.trim();
+      const desc = document.getElementById("admDesc").value.trim() || "Maxsus tayyorlangan ichimlik.";
+
+      if (!title || isNaN(price) || price <= 0) {
+        showToast("Nom va to‘g‘ri narx kiriting!");
+        return;
+      }
+
+      const nextId = APP_DATA.items.reduce((max, i) => Math.max(max, Number(i.id) || 0), 0) + 1;
+      APP_DATA.items.push({
+        id: nextId,
+        category,
+        title,
+        desc,
+        price,
+        icon,
+        image: selectedPhotoDataUrl || "",
+        badge
+      });
+
+      renderMenu();
+      renderAdminItemsList();
+      await saveToFirebase();
+
+      document.getElementById("admTitle").value = "";
+      document.getElementById("admPrice").value = "";
+      document.getElementById("admBadge").value = "";
+      document.getElementById("admDesc").value = "";
+      clearSelectedPhoto();
+      showToast("Barcha telefonlarda yangilandi!");
+    }
+
+    async function editItemPriceFromAdmin(id) {
+      const item = APP_DATA.items.find(i => i.id === id);
+      if (!item) return;
+      const raw = prompt(`"${item.title}" uchun yangi narxni kiriting:`, item.price);
+      if (raw === null) return;
+      const nextPrice = parseInt(raw.replace(/\s+/g, ""), 10);
+      if (isNaN(nextPrice) || nextPrice <= 0) {
+        showToast("Narx noto‘g‘ri kiritildi!");
+        return;
+      }
+      item.price = nextPrice;
+      renderMenu();
+      renderAdminItemsList();
+      await saveToFirebase();
+      showToast("Narx barcha qurilmalarda yangilandi!");
+    }
+
+    async function deleteItemFromAdmin(id) {
+      APP_DATA.items = APP_DATA.items.filter(i => i.id !== id);
+      delete selectedItems[id];
+      renderMenu();
       updateCartBar();
-      if (Object.keys(selectedItems).length) openCartModal();
-      else closeModal();
+      renderAdminItemsList();
+      await saveToFirebase();
+      showToast("Mahsulot o‘chirildi");
     }
 
-    function closeModal() {
-      document.getElementById("modalBackdrop").classList.remove("open");
+    async function resetDefaultMenu() {
+      APP_DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+      selectedItems = {};
+      renderMenu();
+      updateCartBar();
+      renderAdminItemsList();
+      await saveToFirebase();
+      showToast("Asl menyu tiklandi");
     }
 
-    document.getElementById("modalBackdrop").addEventListener("click", (e) => {
-      if (e.target.id === "modalBackdrop") closeModal();
+    function renderAdminItemsList() {
+      const listEl = document.getElementById("adminItemsList");
+      if (!listEl) return;
+      listEl.innerHTML = APP_DATA.items.map(item => `
+        <div class="admin-row-item">
+          <div style="min-width:0;">
+            <div style="font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${item.image ? "🖼️" : (item.icon || "☕")} ${item.title}</div>
+            <div style="font-size:11.5px; color:var(--accent-bright);">${formatPrice(item.price)}</div>
+          </div>
+          <div style="display:flex; gap:6px; flex-shrink:0;">
+            <button type="button" class="admin-mini-btn" onclick="editItemPriceFromAdmin(${item.id})">Narx</button>
+            <button type="button" class="admin-mini-btn danger" onclick="deleteItemFromAdmin(${item.id})">O‘chir</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    document.getElementById("admPhotoFile").addEventListener("change", async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      try {
+        selectedPhotoDataUrl = await compressImageFile(file);
+        updatePhotoPreview();
+        showToast("Rasm yuklandi");
+      } catch (err) {
+        showToast("Rasmni o‘qishda xatolik");
+      }
     });
 
-    document.getElementById("floatingCart").addEventListener("click", openCartModal);
+    document.getElementById("admIcon").addEventListener("input", () => {
+      if (!selectedPhotoDataUrl) updatePhotoPreview();
+    });
+
+    document.getElementById("adminOpenBtn").addEventListener("click", () => {
+      if (isAdminUnlocked) {
+        const drawer = document.getElementById("adminDrawer");
+        if (drawer.classList.contains("open")) closeAdminDrawer();
+        else openAdminDrawer();
+      } else {
+        openAdminAuthModal();
+      }
+    });
+
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const html = document.documentElement;
+      const isDark = html.getAttribute("data-theme") !== "light";
+      html.setAttribute("data-theme", isDark ? "light" : "dark");
+      document.getElementById("themeToggle").textContent = isDark ? "🌙" : "☀️";
+    });
 
     document.getElementById("searchInput").addEventListener("input", (e) => {
       searchQuery = e.target.value.trim().toLowerCase();
       renderMenu();
     });
 
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const html = document.documentElement;
-      const isDark = html.getAttribute("data-theme") === "dark";
-      html.setAttribute("data-theme", isDark ? "light" : "dark");
-      document.getElementById("themeToggle").textContent = isDark ? "🌙" : "☀️";
+    document.getElementById("modalBackdrop").addEventListener("click", (e) => {
+      if (e.target.id === "modalBackdrop") closeModal();
     });
 
     initBrand();
     renderCategories();
     renderMenu();
+    updateCartBar();
+    syncFromFirebase(false);
+    setInterval(updateOpenClosedStatus, 30000);
+    setInterval(() => syncFromFirebase(false), 10000);
   </script>
 </body>
 </html>
