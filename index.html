@@ -601,8 +601,10 @@
       border-radius: 30px 30px 0 0;
       padding: 22px 22px 34px;
       animation: riseUp 0.28s ease-out;
-      max-height: 85vh;
+      max-height: 85dvh;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
     }
 
     @keyframes riseUp {
@@ -652,15 +654,19 @@
       right: 0;
       width: 100%;
       max-width: 390px;
-      height: 100vh;
+      height: 100dvh;
+      max-height: 100dvh;
       background: var(--bg-base);
       border-left: 1px solid var(--border-gold);
       box-shadow: -16px 0 40px rgba(0, 0, 0, 0.55);
       z-index: 55;
       transform: translateX(100%);
       transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-      padding: 20px 18px 32px;
+      padding: 20px 18px 110px;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      touch-action: pan-y;
     }
 
     .admin-drawer.open {
@@ -897,7 +903,7 @@
   <script>
     const ADMIN_CODE = "admin123";
     const FIREBASE_DB_URL = "https://abdulla-cafe-default-rtdb.firebaseio.com";
-    const STORAGE_KEY = "abdulla_cafe_menu_cache_v3";
+    const STORAGE_KEY = "abdulla_cafe_menu_cache_v4";
 
     const DEFAULT_DATA = {
       brand: {
@@ -1005,6 +1011,7 @@
     let selectedItems = {};
     let isAdminUnlocked = false;
     let selectedPhotoDataUrl = "";
+    let lastUpdatedAt = 0;
 
     const formatPrice = (num) => Number(num || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + APP_DATA.brand.currency;
 
@@ -1039,13 +1046,19 @@
       setTimeout(() => toast.classList.remove("visible"), 2400);
     }
 
-    async function saveToFirebase() {
+    function persistLocalCache() {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
           brand: APP_DATA.brand,
-          items: APP_DATA.items
+          items: APP_DATA.items,
+          updatedAt: lastUpdatedAt
         }));
       } catch (e) {}
+    }
+
+    async function saveToFirebase() {
+      lastUpdatedAt = Date.now();
+      persistLocalCache();
 
       try {
         const res = await fetch(`${FIREBASE_DB_URL}/menu.json`, {
@@ -1053,7 +1066,8 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             items: APP_DATA.items,
-            updatedAt: Date.now()
+            empty: APP_DATA.items.length === 0,
+            updatedAt: lastUpdatedAt
           })
         });
         if (!res.ok) {
@@ -1066,23 +1080,29 @@
 
     async function syncFromFirebase(notify = false) {
       try {
-        const res = await fetch(`${FIREBASE_DB_URL}/menu.json?t=${Date.now()}`);
+        const res = await fetch(`${FIREBASE_DB_URL}/menu.json?t=${Date.now()}`, {
+          cache: "no-store"
+        });
         if (!res.ok) return;
         const data = await res.json();
-        if (data && Array.isArray(data.items)) {
-          APP_DATA.items = data.items;
-          try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify({
-              brand: APP_DATA.brand,
-              items: APP_DATA.items
-            }));
-          } catch (e) {}
-          renderMenu();
-          updateCartBar();
-          if (isAdminUnlocked) renderAdminItemsList();
-          if (notify) showToast("Menyu sinxronlandi!");
-        } else if (data === null) {
+
+        if (data === null) {
           await saveToFirebase();
+          return;
+        }
+
+        const remoteItems = Array.isArray(data.items) ? data.items : (data.empty ? [] : null);
+        if (remoteItems !== null) {
+          const remoteUpdated = Number(data.updatedAt || 0);
+          if (remoteUpdated >= lastUpdatedAt || remoteItems.length !== APP_DATA.items.length) {
+            APP_DATA.items = remoteItems;
+            lastUpdatedAt = remoteUpdated || Date.now();
+            persistLocalCache();
+            renderMenu();
+            updateCartBar();
+            if (isAdminUnlocked) renderAdminItemsList();
+            if (notify) showToast("Menyu sinxronlandi!");
+          }
         }
       } catch (err) {}
     }
@@ -1259,7 +1279,7 @@
       document.getElementById("itemsCount").textContent = filtered.length + " ta";
 
       if (!filtered.length) {
-        container.innerHTML = `<div style="text-align:center; padding:42px 20px; color:var(--text-secondary);">Hech narsa topilmadi ☕</div>`;
+        container.innerHTML = `<div style="text-align:center; padding:42px 20px; color:var(--text-secondary);">Hozircha menyu bo‘sh ☕</div>`;
         return;
       }
 
@@ -1391,7 +1411,9 @@
     function openAdminDrawer() {
       updatePhotoPreview();
       renderAdminItemsList();
-      document.getElementById("adminDrawer").classList.add("open");
+      const drawer = document.getElementById("adminDrawer");
+      drawer.scrollTop = 0;
+      drawer.classList.add("open");
     }
 
     function closeAdminDrawer() {
@@ -1475,6 +1497,10 @@
     function renderAdminItemsList() {
       const listEl = document.getElementById("adminItemsList");
       if (!listEl) return;
+      if (!APP_DATA.items.length) {
+        listEl.innerHTML = `<div style="font-size:12.5px; color:var(--text-secondary); padding:8px 0;">Hozircha mahsulot yo‘q</div>`;
+        return;
+      }
       listEl.innerHTML = APP_DATA.items.map(item => `
         <div class="admin-row-item">
           <div style="min-width:0;">
@@ -1531,13 +1557,18 @@
       if (e.target.id === "modalBackdrop") closeModal();
     });
 
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) syncFromFirebase(false);
+    });
+    window.addEventListener("focus", () => syncFromFirebase(false));
+
     initBrand();
     renderCategories();
     renderMenu();
     updateCartBar();
     syncFromFirebase(false);
     setInterval(updateOpenClosedStatus, 30000);
-    setInterval(() => syncFromFirebase(false), 10000);
+    setInterval(() => syncFromFirebase(false), 3000);
   </script>
 </body>
 </html>
