@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="google" content="notranslate" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title translate="no">Brend Nomi — Choy & Kofe Menyusi</title>
+  <title translate="no">Abdulla — Choy & Kofe Menyusi</title>
   <style>
     :root {
       --bg-base: #070606;
       --bg-surface: rgba(20, 17, 15, 0.72);
-      --bg-card: linear-gradient(145deg, rgba(34, 28, 24, 0.75), rgba(18, 15, 13, 0.85));
-      --bg-card-hover: linear-gradient(145deg, rgba(48, 39, 32, 0.85), rgba(25, 20, 17, 0.92));
+      --bg-card: linear-gradient(145deg, rgba(34, 28, 24, 0.78), rgba(18, 15, 13, 0.88));
+      --bg-card-hover: linear-gradient(145deg, rgba(48, 39, 32, 0.88), rgba(25, 20, 17, 0.94));
       --bg-glass: rgba(16, 13, 12, 0.82);
       --border-subtle: rgba(255, 235, 205, 0.08);
       --border-gold: rgba(217, 155, 78, 0.35);
@@ -25,10 +25,10 @@
     [data-theme="light"] {
       --bg-base: #f7f3ee;
       --bg-surface: rgba(255, 252, 248, 0.85);
-      --bg-card: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 241, 233, 0.88));
+      --bg-card: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(247, 239, 229, 0.9));
       --bg-card-hover: linear-gradient(145deg, #ffffff, #f3e8db);
       --bg-glass: rgba(255, 252, 248, 0.88);
-      --border-subtle: rgba(66, 44, 24, 0.09);
+      --border-subtle: rgba(66, 44, 24, 0.1);
       --border-gold: rgba(184, 115, 36, 0.35);
       --text-primary: #1f1712;
       --text-secondary: #6e5d4f;
@@ -119,15 +119,16 @@
     .app-shell {
       max-width: 580px;
       margin: 0 auto;
-      padding: 18px 16px 110px;
+      padding: 14px 16px 110px;
     }
 
     .top-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .top-actions {
@@ -140,13 +141,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 15px;
+      padding: 7px 14px;
       border-radius: 999px;
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--text-primary);
       box-shadow: 0 4px 20px rgba(0,0,0,0.22);
@@ -163,6 +164,24 @@
       background: rgba(127, 29, 29, 0.28);
       color: #f87171;
       box-shadow: 0 0 18px rgba(239, 68, 68, 0.22);
+    }
+
+    .cache-pill {
+      display: none;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(224, 159, 69, 0.14);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-bright);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .cache-pill.visible {
+      display: inline-flex;
     }
 
     .pulse-dot {
@@ -186,37 +205,16 @@
       50% { transform: scale(0.8); opacity: 0.45; }
     }
 
-    .admin-pill {
-      height: 40px;
-      padding: 0 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-surface);
-      -webkit-backdrop-filter: blur(16px);
-      backdrop-filter: blur(16px);
-      color: var(--text-secondary);
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.22s ease;
-    }
-
-    .admin-pill:hover,
-    .admin-pill.active-admin {
-      border-color: var(--border-gold);
-      color: var(--accent-bright);
-    }
-
     .theme-switch {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
       border: 1px solid var(--border-subtle);
       background: var(--bg-surface);
       -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px);
       color: var(--accent-bright);
-      font-size: 17px;
+      font-size: 16px;
       display: grid;
       place-items: center;
       cursor: pointer;
@@ -230,84 +228,77 @@
 
     .hero-card {
       position: relative;
-      border-radius: 28px;
-      padding: 26px 22px;
+      border-radius: 22px;
+      padding: 16px 20px;
       background: var(--bg-card);
       border: 1px solid var(--border-gold);
-      -webkit-backdrop-filter: blur(24px);
-      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
       box-shadow: var(--shadow-card);
       overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 10%;
-      right: 10%;
-      height: 1.5px;
-      background: linear-gradient(90deg, transparent, var(--accent-bright), transparent);
-      opacity: 0.75;
+      margin-bottom: 14px;
     }
 
     .hero-top {
       display: flex;
       align-items: center;
-      gap: 18px;
+      justify-content: center;
+      gap: 12px;
+      min-width: 0;
     }
 
     .brand-emblem {
-      width: 74px;
-      height: 74px;
-      border-radius: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       background: linear-gradient(135deg, var(--accent-bright), #9a4e12);
       display: grid;
       place-items: center;
-      font-size: 32px;
+      font-size: 22px;
       font-weight: 900;
       color: #140c05;
       flex-shrink: 0;
-      box-shadow: 0 12px 28px var(--accent-glow), inset 0 1px 1px rgba(255,255,255,0.5);
+      overflow: hidden;
+      box-shadow: 0 8px 18px var(--accent-glow);
+    }
+
+    .brand-emblem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-details {
+      min-width: 0;
     }
 
     .brand-details h1 {
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 4px;
-      background: linear-gradient(90deg, var(--text-primary), var(--accent-bright));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--text-primary);
     }
 
-    [data-theme="light"] .brand-details h1 {
-      background: none;
-      -webkit-text-fill-color: var(--text-primary);
-    }
-
-    .brand-sub {
-      font-size: 13.5px;
-      color: var(--text-secondary);
-      margin-bottom: 7px;
-    }
-
-    .brand-loc {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--accent-bright);
+    .footer-card {
+      margin-top: 26px;
+      border-radius: 24px;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-card);
     }
 
     .action-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      margin-top: 22px;
     }
 
     .action-tile {
@@ -315,14 +306,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 13px 6px;
-      border-radius: 18px;
+      gap: 7px;
+      padding: 12px 6px;
+      border-radius: 16px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-subtle);
       color: var(--text-primary);
       text-decoration: none;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.22s ease;
@@ -339,9 +330,9 @@
     }
 
     .tile-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
       background: linear-gradient(135deg, rgba(224, 159, 69, 0.22), rgba(224, 159, 69, 0.06));
       border: 1px solid rgba(224, 159, 69, 0.25);
       color: var(--accent-bright);
@@ -351,21 +342,58 @@
 
     .filter-dock {
       position: sticky;
-      top: 12px;
+      top: 10px;
       z-index: 25;
-      padding: 12px;
-      border-radius: 22px;
+      padding: 10px 12px;
+      border-radius: 20px;
       background: var(--bg-glass);
       -webkit-backdrop-filter: blur(20px);
       backdrop-filter: blur(20px);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+    }
+
+    .tab-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-bottom: 10px;
+      padding-bottom: 2px;
+    }
+
+    .tab-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      padding: 9px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+      color: #170e05;
+      border-color: transparent;
+      box-shadow: 0 6px 18px var(--accent-glow);
     }
 
     .search-wrap {
       position: relative;
-      margin-bottom: 12px;
     }
 
     .search-wrap svg {
@@ -379,8 +407,8 @@
 
     .search-field {
       width: 100%;
-      padding: 12px 14px 12px 42px;
-      border-radius: 14px;
+      padding: 11px 14px 11px 40px;
+      border-radius: 13px;
       border: 1px solid var(--border-subtle);
       background: rgba(125, 125, 125, 0.07);
       color: var(--text-primary);
@@ -394,35 +422,6 @@
       box-shadow: 0 0 0 3px var(--accent-glow);
     }
 
-    .tab-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .tab-btn {
-      padding: 10px 12px;
-      border-radius: 13px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.02);
-      color: var(--text-secondary);
-      font-size: 13.5px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.22s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .tab-btn.active {
-      background: linear-gradient(135deg, var(--accent-bright), var(--accent));
-      color: #170e05;
-      border-color: transparent;
-      box-shadow: 0 6px 18px var(--accent-glow);
-    }
-
     .list-header {
       display: flex;
       justify-content: space-between;
@@ -434,26 +433,27 @@
     }
 
     .menu-list {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+      align-items: stretch;
     }
 
     .drink-card {
       display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px;
+      flex-direction: column;
+      padding: 10px;
       border-radius: 22px;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
       transition: all 0.24s ease;
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      height: 100%;
     }
 
     .drink-card:hover {
@@ -462,16 +462,20 @@
       transform: translateY(-2px);
     }
 
+    .drink-card.sold-out {
+      opacity: 0.68;
+    }
+
     .drink-visual {
-      width: 78px;
-      height: 78px;
-      border-radius: 18px;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
       background: radial-gradient(circle at top left, rgba(224, 159, 69, 0.25), rgba(30, 22, 16, 0.6));
       border: 1px solid var(--border-gold);
       display: grid;
       place-items: center;
-      font-size: 34px;
-      flex-shrink: 0;
+      font-size: 46px;
+      margin-bottom: 10px;
       position: relative;
       overflow: hidden;
     }
@@ -480,6 +484,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     [data-theme="light"] .drink-visual {
@@ -488,31 +493,56 @@
 
     .drink-tag {
       position: absolute;
-      top: 5px;
-      left: 5px;
+      top: 8px;
+      left: 8px;
       background: linear-gradient(135deg, var(--accent-bright), var(--accent));
       color: #170e05;
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 800;
-      padding: 2px 7px;
-      border-radius: 7px;
+      padding: 3px 8px;
+      border-radius: 8px;
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .sold-out-pill {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(185, 28, 28, 0.92);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 8px;
       z-index: 2;
     }
 
     .drink-info {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       min-width: 0;
+      padding: 0 2px 2px;
     }
 
     .drink-name {
-      font-size: 16.5px;
+      font-size: 15px;
       font-weight: 800;
+      line-height: 1.25;
       margin-bottom: 4px;
       color: var(--text-primary);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .drink-desc {
-      font-size: 12.5px;
+      font-size: 11.5px;
+      line-height: 1.35;
       color: var(--text-secondary);
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -526,31 +556,39 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 6px;
+      margin-top: auto;
     }
 
     .drink-price {
-      font-size: 15px;
+      font-size: 13.5px;
       font-weight: 800;
       color: var(--accent-bright);
     }
 
     .plus-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 11px;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
       border: 1px solid var(--border-gold);
-      background: rgba(224, 159, 69, 0.14);
+      background: rgba(224, 159, 69, 0.16);
       color: var(--accent-bright);
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 700;
       display: grid;
       place-items: center;
       cursor: pointer;
+      flex-shrink: 0;
     }
 
-    .plus-btn:hover {
+    .plus-btn:hover:not(:disabled) {
       background: var(--accent);
       color: #170e05;
+    }
+
+    .plus-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
     }
 
     .cart-dock {
@@ -583,7 +621,7 @@
       background: rgba(0, 0, 0, 0.72);
       -webkit-backdrop-filter: blur(8px);
       backdrop-filter: blur(8px);
-      z-index: 50;
+      z-index: 65;
       display: none;
       align-items: flex-end;
       justify-content: center;
@@ -653,7 +691,7 @@
       top: 0;
       right: 0;
       width: 100%;
-      max-width: 390px;
+      max-width: 410px;
       height: 100dvh;
       max-height: 100dvh;
       background: var(--bg-base);
@@ -671,6 +709,46 @@
 
     .admin-drawer.open {
       transform: translateX(0);
+    }
+
+    .admin-section {
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border-gold);
+      margin-bottom: 14px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .storage-meter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      margin-bottom: 6px;
+      color: var(--text-secondary);
+    }
+
+    .storage-bar-bg {
+      width: 100%;
+      height: 7px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .storage-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #22c55e, var(--accent-bright));
+      transition: width 0.3s ease;
+    }
+
+    .admin-label {
+      display: block;
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+      font-weight: 600;
     }
 
     .admin-field {
@@ -719,7 +797,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       padding: 10px 12px;
       border-radius: 14px;
       border: 1px solid var(--border-subtle);
@@ -728,8 +806,15 @@
       font-size: 13px;
     }
 
+    .admin-row-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
     .admin-mini-btn {
-      padding: 6px 10px;
+      padding: 6px 9px;
       border-radius: 9px;
       border: 1px solid var(--border-subtle);
       background: rgba(224, 159, 69, 0.14);
@@ -756,7 +841,7 @@
       border-radius: 99px;
       font-size: 13px;
       font-weight: 800;
-      z-index: 70;
+      z-index: 80;
       transition: transform 0.3s ease;
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
     }
@@ -779,12 +864,16 @@
 
   <div class="app-shell">
     <div class="top-nav">
-      <div class="live-badge is-closed" id="statusBadge">
-        <span class="pulse-dot closed" id="statusDot"></span>
-        <span id="workHoursText">Yopiq • 09:00 – 23:00</span>
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <div class="live-badge is-closed" id="statusBadge">
+          <span class="pulse-dot closed" id="statusDot"></span>
+          <span id="workHoursText">Yopiq • 09:00 – 23:00</span>
+        </div>
+        <button type="button" class="cache-pill" id="cacheModeBadge" onclick="showCacheInfoModal()">
+          <span>💾 Kesh rejimi</span>
+        </button>
       </div>
       <div class="top-actions">
-        <button type="button" class="admin-pill" id="adminOpenBtn" title="Admin panel">Admin</button>
         <button type="button" class="theme-switch" id="themeToggle" title="Mavzuni almashtirish">☀️</button>
       </div>
     </div>
@@ -793,49 +882,20 @@
       <div class="hero-top">
         <div class="brand-emblem" id="bizLogo">☕</div>
         <div class="brand-details">
-          <h1 id="bizName">Brend Nomi</h1>
-          <p class="brand-sub" id="bizTagline">Saralangan choy va yangi qovurilgan kofe maskani</p>
-          <div class="brand-loc" id="bizAddress">📍 Markaziy ko‘cha, 1-uy</div>
+          <h1 id="bizName">Abdulla</h1>
         </div>
-      </div>
-
-      <div class="action-grid">
-        <a href="#" id="btnCall" class="action-tile">
-          <span class="tile-icon">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </span>
-          <span>Qo‘ng‘iroq</span>
-        </a>
-        <a href="#" id="btnTelegram" target="_blank" rel="noopener" class="action-tile">
-          <span class="tile-icon">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          </span>
-          <span>Telegram</span>
-        </a>
-        <a href="#" id="btnMap" target="_blank" rel="noopener" class="action-tile">
-          <span class="tile-icon">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <span>Xarita</span>
-        </a>
-        <button type="button" id="btnShare" class="action-tile" onclick="handleShareClick(event)">
-          <span class="tile-icon">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
-          </span>
-          <span translate="no">Ulashish</span>
-        </button>
       </div>
     </header>
 
     <div class="filter-dock">
+      <div class="tab-row" id="categoryBar"></div>
       <div class="search-wrap">
         <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"></circle>
           <path d="M21 21l-4.35-4.35"></path>
         </svg>
-        <input type="text" id="searchInput" class="search-field" placeholder="Choy yoki kofe nomini yozing..." />
+        <input type="text" id="searchInput" class="search-field" placeholder="Choy, kofe yoki boshqa nomni yozing..." />
       </div>
-      <div class="tab-row" id="categoryBar"></div>
     </div>
 
     <div class="list-header">
@@ -843,6 +903,35 @@
       <span id="itemsCount">0 ta</span>
     </div>
     <main class="menu-list" id="menuContainer"></main>
+
+    <footer class="footer-card">
+      <div class="action-grid">
+        <a href="#" id="btnCall" class="action-tile">
+          <span class="tile-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>Qo‘ng‘iroq</span>
+        </a>
+        <a href="#" id="btnTelegram" target="_blank" rel="noopener noreferrer" class="action-tile">
+          <span class="tile-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </span>
+          <span>Telegram</span>
+        </a>
+        <a href="#" id="btnMap" target="_blank" rel="noopener noreferrer" class="action-tile">
+          <span class="tile-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span>Xarita</span>
+        </a>
+        <button type="button" id="btnShare" class="action-tile" onclick="handleShareClick()">
+          <span class="tile-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
+          </span>
+          <span translate="no">Ulashish</span>
+        </button>
+      </div>
+    </footer>
   </div>
 
   <div class="cart-dock" id="floatingCart" onclick="openCartModal()">
@@ -853,24 +942,56 @@
     <div style="font-size: 17px; font-weight: 900;" id="cartTotal">0 so‘m</div>
   </div>
 
-  <!-- CHETKI ADMIN PANEL -->
   <aside class="admin-drawer" id="adminDrawer" aria-label="Admin panel">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
       <div>
         <h3 style="font-size:17px; font-weight:800;">Admin Panel</h3>
-        <div style="font-size:12px; color:var(--text-secondary);">Barcha telefonlarga real vaqtda sinxronlanadi</div>
+        <div style="font-size:12px; color:var(--text-secondary);">Yashirin kirish (#admin) • Tezkor sinxron</div>
       </div>
-      <button type="button" class="admin-mini-btn" onclick="closeAdminDrawer()">Yopish ✕</button>
+      <div style="display:flex; gap:6px;">
+        <button type="button" class="admin-mini-btn" onclick="lockAdminSession()">Chiqish</button>
+        <button type="button" class="admin-mini-btn" onclick="closeAdminDrawer()">Yopish ✕</button>
+      </div>
     </div>
 
-    <div style="padding:12px; border-radius:16px; border:1px solid var(--border-gold); margin-bottom:14px;">
-      <div style="font-size:13px; font-weight:800; margin-bottom:8px;">Yangi mahsulot qo‘shish</div>
-      <input type="text" id="admTitle" class="admin-field" placeholder="Nomi (masalan: Matcha Latte)" />
-      <input type="number" id="admPrice" class="admin-field" placeholder="Narxi (masalan: 28000)" min="0" step="500" />
-      <select id="admCategory" class="admin-field">
-        <option value="coffee">Kofe</option>
-        <option value="tea">Choy</option>
-      </select>
+    <div class="admin-section">
+      <div class="storage-meter">
+        <span>Baza xotirasi (xavfsiz chegara 3.5 MB):</span>
+        <strong id="storageUsedText" style="color:var(--accent-bright);">0 KB</strong>
+      </div>
+      <div class="storage-bar-bg">
+        <div class="storage-bar-fill" id="storageBarFill" style="width:1%;"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+        <span style="font-size:11px; color:var(--text-secondary);">Rasmlar uchun tashqi URL ishlatilsa 0 KB sarflanadi</span>
+        <button type="button" class="admin-mini-btn" onclick="checkAndSyncMenu(true)">Yangilash ↻</button>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <div style="font-size:13px; font-weight:800; margin-bottom:8px;">Bo‘limlar (Kategoriyalar)</div>
+      <div style="display:grid; grid-template-columns:1fr 76px; gap:8px;">
+        <input type="text" id="newCatName" class="admin-field" style="margin-bottom:0;" placeholder="Bo‘lim nomi (masalan: Desertlar)" />
+        <input type="text" id="newCatIcon" class="admin-field" style="margin-bottom:0; text-align:center;" placeholder="🍰" value="🍰" />
+      </div>
+      <button type="button" class="admin-mini-btn" style="width:100%; padding:8px; margin-top:8px;" onclick="addCategoryFromAdmin()">+ Yangi bo‘lim qo‘shish</button>
+      <div id="adminCategoriesList" style="margin-top:10px;"></div>
+    </div>
+
+    <div class="admin-section">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span style="font-size:13px; font-weight:800;" id="admFormTitle">Yangi mahsulot qo‘shish</span>
+        <button type="button" class="admin-mini-btn" id="admCancelEditBtn" style="display:none;" onclick="cancelEditItem()">Bekor</button>
+      </div>
+
+      <label class="admin-label" for="admTitle">Nomi</label>
+      <input type="text" id="admTitle" class="admin-field" placeholder="Masalan: Matcha Latte" />
+
+      <label class="admin-label" for="admPrice">Narxi (so‘m)</label>
+      <input type="number" id="admPrice" class="admin-field" placeholder="Masalan: 28000" min="0" step="500" />
+
+      <label class="admin-label" for="admCategory">Bo‘lim</label>
+      <select id="admCategory" class="admin-field"></select>
 
       <div class="photo-picker-box">
         <div class="photo-preview-thumb" id="admPhotoPreview">☕</div>
@@ -882,13 +1003,71 @@
         <button type="button" class="admin-mini-btn danger" id="admClearPhotoBtn" style="display:none;" onclick="clearSelectedPhoto()">✕</button>
       </div>
 
-      <input type="text" id="admIcon" class="admin-field" placeholder="Emoji (masalan: 🍵 yoki ☕)" value="☕" />
-      <input type="text" id="admBadge" class="admin-field" placeholder="Yorliq (ixtiyoriy, masalan: Yangi)" />
-      <input type="text" id="admDesc" class="admin-field" placeholder="Qisqacha tavsifi" />
-      <button type="button" class="copy-action-btn" style="width:100%;" onclick="addMenuItemFromAdmin()">+ Menyuga qo‘shish</button>
+      <label class="admin-label" for="admPhotoUrl">Yoki tashqi rasm havolasi (xotirani 0 KB sarflaydi)</label>
+      <input type="url" id="admPhotoUrl" class="admin-field" placeholder="https://... (ixtiyoriy)" />
+
+      <label class="admin-label" for="admIcon">Emoji</label>
+      <input type="text" id="admIcon" class="admin-field" placeholder="Masalan: 🍵 yoki ☕" value="☕" />
+
+      <label class="admin-label" for="admBadge">Yorliq (ixtiyoriy)</label>
+      <input type="text" id="admBadge" class="admin-field" placeholder="Masalan: Klassik, Yangi, Tavsiya" />
+
+      <label class="admin-label" for="admDesc">Qisqacha tavsifi</label>
+      <input type="text" id="admDesc" class="admin-field" placeholder="Masalan: Yumshoq sut ko‘pikli kofe" />
+
+      <button type="button" class="copy-action-btn" style="width:100%;" id="admSaveItemBtn" onclick="saveMenuItemFromAdmin()">+ Menyuga qo‘shish</button>
     </div>
 
-    <div style="margin-bottom:14px;">
+    <div class="admin-section">
+      <div style="font-size:13px; font-weight:800; margin-bottom:8px;">Kafe ma’lumotlari</div>
+      <label class="admin-label" for="brandNameInput">Brend nomi</label>
+      <input type="text" id="brandNameInput" class="admin-field" />
+
+      <label class="admin-label" for="brandLogoUrlInput">Logotip rasm havolasi (ixtiyoriy)</label>
+      <input type="url" id="brandLogoUrlInput" class="admin-field" placeholder="https://... (bo‘sh bo‘lsa emoji ishlatiladi)" />
+
+      <label class="admin-label" for="brandLogoTextInput">Logotip emoji (agar rasm bo‘lmasa)</label>
+      <input type="text" id="brandLogoTextInput" class="admin-field" placeholder="☕" />
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+        <div>
+          <label class="admin-label" for="brandOpenInput">Ochilish soati (0–23)</label>
+          <input type="number" id="brandOpenInput" class="admin-field" min="0" max="23" />
+        </div>
+        <div>
+          <label class="admin-label" for="brandCloseInput">Yopilish soati (0–24)</label>
+          <input type="number" id="brandCloseInput" class="admin-field" min="0" max="24" />
+        </div>
+      </div>
+
+      <label class="admin-label" for="brandPhoneInput">Telefon</label>
+      <input type="text" id="brandPhoneInput" class="admin-field" />
+
+      <label class="admin-label" for="brandTelegramInput">Telegram havola</label>
+      <input type="text" id="brandTelegramInput" class="admin-field" />
+
+      <label class="admin-label" for="brandMapInput">Xarita havola</label>
+      <input type="text" id="brandMapInput" class="admin-field" />
+
+      <button type="button" class="admin-mini-btn" style="width:100%; padding:9px;" onclick="saveBrandSettings()">Ma’lumotlarni saqlash</button>
+    </div>
+
+    <div class="admin-section">
+      <div style="font-size:13px; font-weight:800; margin-bottom:8px;">Admin parolini o‘zgartirish</div>
+      <label class="admin-label" for="newAdminPassInput">Yangi parol (kamida 6 ta belgi)</label>
+      <input type="password" id="newAdminPassInput" class="admin-field" placeholder="Yangi parol..." />
+      <label class="admin-label" for="confirmAdminPassInput">Yangi parolni tasdiqlang</label>
+      <input type="password" id="confirmAdminPassInput" class="admin-field" placeholder="Qayta kiriting..." />
+      <button type="button" class="admin-mini-btn" style="width:100%; padding:9px;" onclick="updateAdminPassword()">Parolni yangilash</button>
+    </div>
+
+    <div class="admin-section">
+      <div style="font-size:13px; font-weight:800; margin-bottom:8px;">Zaxira nusxa (Backup)</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+        <button type="button" class="admin-mini-btn" style="padding:8px;" onclick="exportMenuJson()">JSON nusxalash</button>
+        <button type="button" class="admin-mini-btn" style="padding:8px;" onclick="document.getElementById('importJsonFile').click()">JSON yuklash</button>
+        <input type="file" id="importJsonFile" accept="application/json,.json" style="display:none;" />
+      </div>
       <button type="button" class="admin-mini-btn danger" style="width:100%; padding:9px;" onclick="resetDefaultMenu()">Asl menyuga qaytish</button>
     </div>
 
@@ -901,235 +1080,687 @@
   </div>
 
   <script>
-    const ADMIN_CODE = "admin123";
+    const DEFAULT_ADMIN_PASS_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
     const FIREBASE_DB_URL = "https://abdulla-cafe-default-rtdb.firebaseio.com";
-    const STORAGE_KEY = "abdulla_cafe_menu_cache_v4";
+    const STORAGE_KEY = "abdulla_cafe_menu_cache_v13";
+    const VERSION_KEY = "abdulla_cafe_menu_ver_v13";
+    const PASS_CACHE_KEY = "abdulla_cafe_admin_hash_v13";
+    const THEME_KEY = "abdulla_cafe_theme_v13";
+    const VERSION_CHECK_INTERVAL_MS = 10000;
+    const MAX_SAFE_PAYLOAD_BYTES = 3.5 * 1024 * 1024;
+
+    const DEFAULT_CATEGORIES = [
+      { id: "all", name: "Hammasi", icon: "✨" },
+      { id: "tea", name: "Choy", icon: "🫖" },
+      { id: "coffee", name: "Kofe", icon: "☕" }
+    ];
 
     const DEFAULT_DATA = {
       brand: {
-        name: "Brend Nomi",
+        name: "Abdulla",
         logoText: "☕",
-        tagline: "Saralangan choy va yangi qovurilgan kofe maskani",
+        logoUrl: "",
+        tagline: "",
+        address: "",
         openHour: 9,
         closeHour: 23,
-        hoursLabel: "09:00 – 23:00",
-        address: "📍 Markaziy ko‘cha, 1-uy",
-        phone: "+998901234567",
-        telegram: "https://t.me/username",
-        mapUrl: "https://maps.google.com",
-        currency: "so‘m"
+        phone: "+998900000000",
+        telegramUrl: "https://t.me/username",
+        mapUrl: "https://maps.google.com"
       },
-      categories: [
-        { id: "all", name: "Hammasi", icon: "✨" },
-        { id: "tea", name: "Choy", icon: "🫖" },
-        { id: "coffee", name: "Kofe", icon: "☕" }
-      ],
+      categories: DEFAULT_CATEGORIES,
       items: [
         {
-          id: 1,
-          category: "coffee",
-          title: "Espresso",
-          desc: "100% Arabica donlaridan tayyorlangan klassik achchiq va xushbo‘y kofe.",
-          price: 18000,
-          icon: "☕",
-          image: "",
-          badge: "Klassik"
-        },
-        {
-          id: 2,
-          category: "coffee",
-          title: "Kapuchino",
-          desc: "Yumshoq sut ko‘pigi va boy espresso uyg‘unligi.",
-          price: 25000,
-          icon: "🥛",
-          image: "",
-          badge: "Top"
-        },
-        {
-          id: 3,
-          category: "coffee",
-          title: "Latte",
-          desc: "Ko‘p sutli mayin va yoqimli ta’mga ega kofe ichimligi.",
-          price: 26000,
-          icon: "🤎",
-          image: "",
-          badge: ""
-        },
-        {
-          id: 4,
+          id: "tea-1",
+          title: "Ko‘k Choy",
+          price: 15000,
           category: "tea",
-          title: "Ko‘k choy (choynak)",
-          desc: "Yuqori navli saralangan ko‘k choy barglaridan damlangan.",
-          price: 12000,
           icon: "🍵",
-          image: "",
-          badge: ""
+          photoData: "",
+          badge: "Klassik",
+          desc: "Xushbo‘y va tetiklantiruvchi saralangan ko‘k choy",
+          available: true
         },
         {
-          id: 5,
-          category: "tea",
-          title: "Limon va yalpizli choy",
-          desc: "Yangi uzilgan yalpiz, limon bo‘laklari va asal bilan damlangan maxsus choy.",
-          price: 22000,
-          icon: "🍋",
-          image: "",
-          badge: "Tavsiya"
-        },
-        {
-          id: 6,
-          category: "tea",
-          title: "Mevali rezavor choy",
-          desc: "Malina, qorag‘at va tog‘ giyohlaridan tayyorlangan xushbo‘y choy.",
-          price: 28000,
-          icon: "🫖",
-          image: "",
-          badge: "Yangi"
+          id: "coffee-1",
+          title: "Amerikano",
+          price: 20000,
+          category: "coffee",
+          icon: "☕",
+          photoData: "",
+          badge: "Tavsiya",
+          desc: "Yangi maydalangan donlardan tayyorlangan klassik kofe",
+          available: true
         }
       ]
     };
 
-    function loadCachedData() {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (parsed && Array.isArray(parsed.items)) {
-            return {
-              brand: { ...DEFAULT_DATA.brand, ...(parsed.brand || {}) },
-              categories: DEFAULT_DATA.categories,
-              items: parsed.items
-            };
-          }
-        }
-      } catch (e) {}
-      return JSON.parse(JSON.stringify(DEFAULT_DATA));
+    let state = {
+      activeCategory: "all",
+      searchQuery: "",
+      cart: {},
+      isAdminAuthenticated: false,
+      failedLoginAttempts: 0,
+      loginLockUntil: 0,
+      editingItemId: null,
+      draftPhotoData: "",
+      knownVersion: null,
+      usingFallbackCache: false,
+      consecutiveSyncErrors: 0,
+      isSyncing: false,
+      data: cloneData(DEFAULT_DATA)
+    };
+
+    function cloneData(obj) {
+      return JSON.parse(JSON.stringify(obj));
     }
 
-    let APP_DATA = loadCachedData();
-    let activeCategory = "all";
-    let searchQuery = "";
-    let selectedItems = {};
-    let isAdminUnlocked = false;
-    let selectedPhotoDataUrl = "";
-    let lastUpdatedAt = 0;
+    function escapeHtml(str = "") {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
 
-    const formatPrice = (num) => Number(num || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + APP_DATA.brand.currency;
+    function formatPrice(num) {
+      return Number(num || 0).toLocaleString("uz-UZ") + " so‘m";
+    }
 
-    function updateOpenClosedStatus() {
-      const now = new Date();
-      const currentHour = now.getHours() + now.getMinutes() / 60;
-      const openH = Number(APP_DATA.brand.openHour ?? 9);
-      const closeH = Number(APP_DATA.brand.closeHour ?? 23);
-      const isOpen = currentHour >= openH && currentHour < closeH;
+    function showToast(msg) {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.classList.add("visible");
+      clearTimeout(showToast._timer);
+      showToast._timer = setTimeout(() => el.classList.remove("visible"), 2200);
+    }
+
+    function applyTheme(theme) {
+      const target = theme === "light" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", target);
+      const btn = document.getElementById("themeToggle");
+      if (btn) btn.textContent = target === "light" ? "🌙" : "☀️";
+      try {
+        localStorage.setItem(THEME_KEY, target);
+      } catch {}
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme") || "dark";
+      applyTheme(current === "dark" ? "light" : "dark");
+    }
+
+    function updateCacheBadge() {
+      const badge = document.getElementById("cacheModeBadge");
+      if (!badge) return;
+      badge.classList.toggle("visible", state.usingFallbackCache);
+    }
+
+    function showCacheInfoModal() {
+      openModal(`
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:8px;">💾 Kesh zaxira rejimi faol</h3>
+        <p style="font-size:13.5px; color:var(--text-secondary); margin-bottom:14px;">
+          Hozir ma’lumotlar bazasiga vaqtincha ulanib bo‘lmadi yoki tarmoq uzilgan.
+          Menyu telefon xotirasidagi saqlangan keshdan ishlamoqda — mahsulotlarni ko‘rib, tanlashingiz mumkin.
+        </p>
+        <button type="button" class="copy-action-btn" style="width:100%;" onclick="closeModal(); state.consecutiveSyncErrors = 0; checkAndSyncMenu(true);">
+          Qayta ulanib ko‘rish
+        </button>
+      `);
+    }
+
+    async function hashSecret(secret) {
+      const normalized = String(secret ?? "");
+      if (window.crypto && window.crypto.subtle) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(normalized);
+        const digest = await window.crypto.subtle.digest("SHA-256", data);
+        return Array.from(new Uint8Array(digest))
+          .map(b => b.toString(16).padStart(2, "0"))
+          .join("");
+      }
+
+      let h1 = 0x811c9dc5;
+      let h2 = 0x01000193;
+      for (let i = 0; i < normalized.length; i++) {
+        const ch = normalized.charCodeAt(i);
+        h1 ^= ch;
+        h1 = Math.imul(h1, 0x01000193);
+        h2 ^= (ch + i * 31);
+        h2 = Math.imul(h2, 0x85ebca6b);
+      }
+      return (h1 >>> 0).toString(16).padStart(8, "0") + (h2 >>> 0).toString(16).padStart(8, "0");
+    }
+
+    function getCachedAdminHash() {
+      try {
+        return localStorage.getItem(PASS_CACHE_KEY) || DEFAULT_ADMIN_PASS_HASH;
+      } catch {
+        return DEFAULT_ADMIN_PASS_HASH;
+      }
+    }
+
+    function setCachedAdminHash(hash) {
+      try {
+        if (hash && /^[a-f0-9]{16,128}$/i.test(hash)) {
+          localStorage.setItem(PASS_CACHE_KEY, hash);
+        }
+      } catch {}
+    }
+
+    async function resolveActiveAdminHash() {
+      if (FIREBASE_DB_URL && navigator.onLine) {
+        try {
+          const res = await fetch(`${FIREBASE_DB_URL}/adminPassHash.json`, { cache: "no-store" });
+          if (res.ok) {
+            const remoteHash = await res.json();
+            if (typeof remoteHash === "string" && /^[a-f0-9]{16,128}$/i.test(remoteHash)) {
+              setCachedAdminHash(remoteHash);
+              return remoteHash;
+            }
+          }
+        } catch {}
+      }
+      return getCachedAdminHash();
+    }
+
+    function normalizeMenuData(raw) {
+      const fallback = cloneData(DEFAULT_DATA);
+      if (!raw || typeof raw !== "object") return fallback;
+
+      const brand = {
+        ...fallback.brand,
+        ...(raw.brand && typeof raw.brand === "object" ? raw.brand : {})
+      };
+      brand.openHour = Math.min(23, Math.max(0, Number(brand.openHour ?? 9)));
+      brand.closeHour = Math.min(24, Math.max(1, Number(brand.closeHour ?? 23)));
+      brand.logoUrl = typeof brand.logoUrl === "string" ? brand.logoUrl.trim() : "";
+
+      const rawCats = Array.isArray(raw.categories) ? raw.categories : Object.values(raw.categories || {});
+      const categories = [
+        { id: "all", name: "Hammasi", icon: "✨" },
+        ...rawCats
+          .filter(c => c && c.id && c.id !== "all" && c.name)
+          .map(c => ({
+            id: String(c.id),
+            name: String(c.name),
+            icon: String(c.icon || "🍽️")
+          }))
+      ];
+
+      const validCatIds = new Set(categories.map(c => c.id));
+      const rawItems = Array.isArray(raw.items) ? raw.items : Object.values(raw.items || {});
+      const items = rawItems
+        .filter(item => item && item.title)
+        .map((item, idx) => ({
+          id: String(item.id || `item-${idx + 1}`),
+          title: String(item.title),
+          price: Math.max(0, Number(item.price || 0)),
+          category: validCatIds.has(item.category) ? String(item.category) : (categories[1]?.id || "tea"),
+          icon: String(item.icon || "☕"),
+          photoData: typeof item.photoData === "string" ? item.photoData : "",
+          badge: item.badge ? String(item.badge) : "",
+          desc: item.desc ? String(item.desc) : "",
+          available: item.available !== false
+        }));
+
+      return { brand, categories, items };
+    }
+
+    function saveLocalCache(data, version = null) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        if (version !== null) {
+          localStorage.setItem(VERSION_KEY, String(version));
+        }
+      } catch (err) {
+        console.warn("localStorage sig‘imi to‘lgan:", err);
+        showToast("Telefon xotirasi to‘ldi — rasmlarni havola orqali qo‘shing");
+      }
+    }
+
+    function loadLocalCache() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        const ver = localStorage.getItem(VERSION_KEY);
+        if (!raw) return null;
+        return {
+          data: normalizeMenuData(JSON.parse(raw)),
+          version: ver || null
+        };
+      } catch {
+        return null;
+      }
+    }
+
+    function activateFallbackCache(notify = false) {
+      const cached = loadLocalCache();
+      if (cached) {
+        state.data = cached.data;
+        if (cached.version) state.knownVersion = cached.version;
+      }
+      state.usingFallbackCache = true;
+      updateCacheBadge();
+      renderAll();
+      if (notify) {
+        showToast("Baza vaqtincha javob bermadi — kesh ochildi");
+      }
+    }
+
+    function getDataSizeBytes(obj = state.data) {
+      return new Blob([JSON.stringify(obj)]).size;
+    }
+
+    function updateStorageMeter() {
+      const textEl = document.getElementById("storageUsedText");
+      const barEl = document.getElementById("storageBarFill");
+      if (!textEl || !barEl) return;
+
+      const bytes = getDataSizeBytes();
+      const kb = bytes / 1024;
+      const mb = kb / 1024;
+      const pct = Math.min(100, Math.max(1, (bytes / MAX_SAFE_PAYLOAD_BYTES) * 100));
+
+      textEl.textContent = mb >= 1
+        ? `${mb.toFixed(2)} MB / 3.5 MB`
+        : `${Math.round(kb)} KB / 3.5 MB`;
+      barEl.style.width = `${pct.toFixed(1)}%`;
+      barEl.style.background = bytes > MAX_SAFE_PAYLOAD_BYTES * 0.8
+        ? "linear-gradient(90deg, #f59e0b, #ef4444)"
+        : "linear-gradient(90deg, #22c55e, var(--accent-bright))";
+    }
+
+    async function pushToFirebase(data) {
+      const normalized = normalizeMenuData(data);
+      const payloadBytes = getDataSizeBytes(normalized);
+
+      if (payloadBytes > MAX_SAFE_PAYLOAD_BYTES) {
+        showToast("Hajm 3.5 MB dan oshdi! Eski rasmlarni o‘chiring yoki URL ishlating");
+        return false;
+      }
+
+      const nextVersion = String(Date.now());
+      state.knownVersion = nextVersion;
+      saveLocalCache(normalized, nextVersion);
+      updateStorageMeter();
+
+      if (!FIREBASE_DB_URL || !navigator.onLine) {
+        activateFallbackCache(false);
+        return false;
+      }
+
+      try {
+        const [menuRes, verRes] = await Promise.all([
+          fetch(`${FIREBASE_DB_URL}/menuData.json`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(normalized)
+          }),
+          fetch(`${FIREBASE_DB_URL}/menuVersion.json`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(nextVersion)
+          })
+        ]);
+        if (!menuRes.ok || !verRes.ok) throw new Error("Firebase PUT xatosi");
+        state.usingFallbackCache = false;
+        state.consecutiveSyncErrors = 0;
+        updateCacheBadge();
+        return true;
+      } catch (err) {
+        console.error("Firebase yozish xatosi:", err);
+        activateFallbackCache(false);
+        showToast("Baza xatosi: o‘zgarish telefon keshida saqlandi");
+        return false;
+      }
+    }
+
+    async function checkAndSyncMenu(forceFull = false) {
+      if (state.isSyncing) return;
+      if (!forceFull && document.hidden) return;
+      if (!FIREBASE_DB_URL) {
+        activateFallbackCache(false);
+        return;
+      }
+
+      if (!navigator.onLine) {
+        activateFallbackCache(false);
+        return;
+      }
+
+      if (state.consecutiveSyncErrors >= 4 && !forceFull) {
+        state.usingFallbackCache = true;
+        updateCacheBadge();
+        return;
+      }
+
+      state.isSyncing = true;
+      try {
+        const verRes = await fetch(`${FIREBASE_DB_URL}/menuVersion.json`, { cache: "no-store" });
+        if (!verRes.ok) throw new Error(`Version HTTP ${verRes.status}`);
+        const remoteVersion = await verRes.json();
+
+        if (!forceFull && remoteVersion && String(remoteVersion) === String(state.knownVersion)) {
+          state.usingFallbackCache = false;
+          state.consecutiveSyncErrors = 0;
+          updateCacheBadge();
+          return;
+        }
+
+        const menuRes = await fetch(`${FIREBASE_DB_URL}/menuData.json`, { cache: "no-store" });
+        if (!menuRes.ok) throw new Error(`Menu HTTP ${menuRes.status}`);
+        const json = await menuRes.json();
+        if (!json) {
+          state.usingFallbackCache = false;
+          state.consecutiveSyncErrors = 0;
+          updateCacheBadge();
+          return;
+        }
+
+        const normalized = normalizeMenuData(json);
+        const resolvedVer = remoteVersion ? String(remoteVersion) : String(Date.now());
+        state.data = normalized;
+        state.knownVersion = resolvedVer;
+        state.usingFallbackCache = false;
+        state.consecutiveSyncErrors = 0;
+        saveLocalCache(normalized, resolvedVer);
+        updateCacheBadge();
+        renderAll();
+      } catch (err) {
+        state.consecutiveSyncErrors += 1;
+        console.warn("Sinxronlash xatosi, kesh zaxiraga o‘tilmoqda:", err);
+        activateFallbackCache(state.consecutiveSyncErrors === 1);
+      } finally {
+        state.isSyncing = false;
+      }
+    }
+
+    function updateWorkStatus() {
+      const { openHour, closeHour } = state.data.brand;
+      const nowHour = new Date().getHours();
+      const isOpen = nowHour >= openHour && nowHour < closeHour;
 
       const badge = document.getElementById("statusBadge");
       const dot = document.getElementById("statusDot");
       const text = document.getElementById("workHoursText");
 
+      const fmt = h => String(h).padStart(2, "0") + ":00";
+      text.textContent = `${isOpen ? "Ochiq" : "Yopiq"} • ${fmt(openHour)} – ${fmt(closeHour)}`;
+
       badge.classList.toggle("is-open", isOpen);
       badge.classList.toggle("is-closed", !isOpen);
       dot.classList.toggle("closed", !isOpen);
-      text.textContent = `${isOpen ? "Ochiq" : "Yopiq"} • ${APP_DATA.brand.hoursLabel}`;
     }
 
-    function renderVisualHtml(item, large = false) {
-      if (item.image) {
-        return `<img src="${item.image}" alt="${item.title}" />`;
+    function renderBrand() {
+      const b = state.data.brand;
+      document.title = `${b.name || "Abdulla"} — Choy & Kofe Menyusi`;
+      document.getElementById("bizName").textContent = b.name || "Abdulla";
+
+      const logoEl = document.getElementById("bizLogo");
+      if (b.logoUrl) {
+        logoEl.innerHTML = `<img src="${escapeHtml(b.logoUrl)}" alt="${escapeHtml(b.name || "Logo")}" />`;
+      } else {
+        logoEl.innerHTML = `<span>${escapeHtml(b.logoText || "☕")}</span>`;
       }
-      return `<span style="${large ? "font-size:58px;" : ""}">${item.icon || "☕"}</span>`;
+
+      const cleanPhone = String(b.phone || "").replace(/[^\d+]/g, "");
+      document.getElementById("btnCall").href = cleanPhone ? `tel:${cleanPhone}` : "#";
+      document.getElementById("btnTelegram").href = b.telegramUrl || "https://t.me";
+      document.getElementById("btnMap").href = b.mapUrl || "https://maps.google.com";
+
+      updateWorkStatus();
     }
 
-    function showToast(msg) {
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.classList.add("visible");
-      setTimeout(() => toast.classList.remove("visible"), 2400);
+    function renderCategories() {
+      const bar = document.getElementById("categoryBar");
+      const select = document.getElementById("admCategory");
+
+      bar.innerHTML = state.data.categories.map(cat => {
+        const active = state.activeCategory === cat.id ? "active" : "";
+        return `
+          <button type="button" class="tab-btn ${active}" onclick="selectCategory('${escapeHtml(cat.id)}')">
+            <span>${escapeHtml(cat.icon)}</span>
+            <span>${escapeHtml(cat.name)}</span>
+          </button>
+        `;
+      }).join("");
+
+      const selectableCats = state.data.categories.filter(c => c.id !== "all");
+      select.innerHTML = selectableCats.map(c =>
+        `<option value="${escapeHtml(c.id)}">${escapeHtml(c.icon)} ${escapeHtml(c.name)}</option>`
+      ).join("");
     }
 
-    function persistLocalCache() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
-          brand: APP_DATA.brand,
-          items: APP_DATA.items,
-          updatedAt: lastUpdatedAt
-        }));
-      } catch (e) {}
+    function selectCategory(catId) {
+      state.activeCategory = catId;
+      renderCategories();
+      renderMenu();
     }
 
-    async function saveToFirebase() {
-      lastUpdatedAt = Date.now();
-      persistLocalCache();
+    function getFilteredItems() {
+      const q = state.searchQuery.trim().toLowerCase();
+      return state.data.items.filter(item => {
+        const matchesCat = state.activeCategory === "all" || item.category === state.activeCategory;
+        const matchesQuery = !q ||
+          item.title.toLowerCase().includes(q) ||
+          (item.desc && item.desc.toLowerCase().includes(q));
+        return matchesCat && matchesQuery;
+      });
+    }
 
-      try {
-        const res = await fetch(`${FIREBASE_DB_URL}/menu.json`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            items: APP_DATA.items,
-            empty: APP_DATA.items.length === 0,
-            updatedAt: lastUpdatedAt
-          })
-        });
-        if (!res.ok) {
-          showToast("Firebase Rules (Publish) tekshiring!");
-        }
-      } catch (err) {
-        showToast("Internet yoki baza bilan xatolik!");
+    function renderMenu() {
+      const container = document.getElementById("menuContainer");
+      const titleEl = document.getElementById("currentCategoryTitle");
+      const countEl = document.getElementById("itemsCount");
+
+      const currentCat = state.data.categories.find(c => c.id === state.activeCategory);
+      titleEl.textContent = currentCat ? (currentCat.id === "all" ? "Barcha ichimliklar" : currentCat.name) : "Menyu";
+
+      const items = getFilteredItems();
+      countEl.textContent = `${items.length} ta`;
+
+      if (!items.length) {
+        container.style.gridTemplateColumns = "1fr";
+        container.innerHTML = `
+          <div style="text-align:center; padding:36px 16px; color:var(--text-secondary); font-size:14px;">
+            Mos mahsulot topilmadi.
+          </div>
+        `;
+        return;
       }
+
+      container.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
+      container.innerHTML = items.map(item => {
+        const visualContent = item.photoData
+          ? `<img src="${escapeHtml(item.photoData)}" alt="${escapeHtml(item.title)}" loading="lazy" />`
+          : `<span>${escapeHtml(item.icon || "☕")}</span>`;
+
+        return `
+          <article class="drink-card ${item.available ? "" : "sold-out"}" onclick="openItemModal('${escapeHtml(item.id)}')">
+            <div class="drink-visual">
+              ${item.badge ? `<span class="drink-tag">${escapeHtml(item.badge)}</span>` : ""}
+              ${!item.available ? `<span class="sold-out-pill">Tugagan</span>` : ""}
+              ${visualContent}
+            </div>
+            <div class="drink-info">
+              <div>
+                <div class="drink-name">${escapeHtml(item.title)}</div>
+                <div class="drink-desc">${escapeHtml(item.desc)}</div>
+              </div>
+              <div class="drink-bottom">
+                <span class="drink-price">${formatPrice(item.price)}</span>
+                <button
+                  type="button"
+                  class="plus-btn"
+                  ${item.available ? "" : "disabled"}
+                  onclick="event.stopPropagation(); addToCart('${escapeHtml(item.id)}')"
+                  aria-label="Qo‘shish"
+                >+</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
     }
 
-    async function syncFromFirebase(notify = false) {
+    function addToCart(itemId) {
+      const item = state.data.items.find(i => i.id === itemId);
+      if (!item || !item.available) return;
+      state.cart[itemId] = (state.cart[itemId] || 0) + 1;
+      renderCartDock();
+      showToast(`${item.title} tanlandi`);
+    }
+
+    function changeCartQty(itemId, delta) {
+      const next = (state.cart[itemId] || 0) + delta;
+      if (next <= 0) delete state.cart[itemId];
+      else state.cart[itemId] = next;
+      renderCartDock();
+      openCartModal();
+    }
+
+    function renderCartDock() {
+      const dock = document.getElementById("floatingCart");
+      const countEl = document.getElementById("cartCount");
+      const totalEl = document.getElementById("cartTotal");
+
+      let totalCount = 0;
+      let totalPrice = 0;
+
+      for (const [id, qty] of Object.entries(state.cart)) {
+        const item = state.data.items.find(i => i.id === id);
+        if (!item) continue;
+        totalCount += qty;
+        totalPrice += item.price * qty;
+      }
+
+      countEl.textContent = `${totalCount} ta tanlandi`;
+      totalEl.textContent = formatPrice(totalPrice);
+      dock.classList.toggle("show", totalCount > 0);
+    }
+
+    function openModal(html) {
+      const backdrop = document.getElementById("modalBackdrop");
+      const content = document.getElementById("modalContent");
+      content.innerHTML = `<div class="sheet-bar"></div>${html}`;
+      backdrop.classList.add("open");
+    }
+
+    function closeModal() {
+      document.getElementById("modalBackdrop").classList.remove("open");
+    }
+
+    function openItemModal(itemId) {
+      const item = state.data.items.find(i => i.id === itemId);
+      if (!item) return;
+
+      const mediaHtml = item.photoData
+        ? `<img src="${escapeHtml(item.photoData)}" alt="${escapeHtml(item.title)}" style="width:100%; max-height:220px; object-fit:cover; border-radius:18px; margin-bottom:14px;" />`
+        : `<div style="font-size:52px; margin-bottom:10px;">${escapeHtml(item.icon || "☕")}</div>`;
+
+      openModal(`
+        ${mediaHtml}
+        <h2 style="font-size:20px; font-weight:800; margin-bottom:6px;">${escapeHtml(item.title)}</h2>
+        <p style="font-size:13.5px; color:var(--text-secondary); margin-bottom:14px;">${escapeHtml(item.desc || "")}</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+          <strong style="font-size:18px; color:var(--accent-bright);">${formatPrice(item.price)}</strong>
+          <button
+            type="button"
+            class="copy-action-btn"
+            ${item.available ? "" : "disabled"}
+            onclick="addToCart('${escapeHtml(item.id)}'); closeModal();"
+          >${item.available ? "Tanlash +" : "Hozircha tugagan"}</button>
+        </div>
+      `);
+    }
+
+    function openCartModal() {
+      const entries = Object.entries(state.cart)
+        .map(([id, qty]) => ({ item: state.data.items.find(i => i.id === id), qty }))
+        .filter(x => x.item);
+
+      if (!entries.length) {
+        closeModal();
+        return;
+      }
+
+      const total = entries.reduce((sum, x) => sum + x.item.price * x.qty, 0);
+      const rows = entries.map(({ item, qty }) => `
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border-subtle);">
+          <div>
+            <div style="font-weight:700; font-size:14px;">${escapeHtml(item.title)}</div>
+            <div style="font-size:12px; color:var(--text-secondary);">${formatPrice(item.price)}</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button type="button" class="admin-mini-btn" onclick="changeCartQty('${escapeHtml(item.id)}', -1)">-</button>
+            <strong style="min-width:20px; text-align:center;">${qty}</strong>
+            <button type="button" class="admin-mini-btn" onclick="changeCartQty('${escapeHtml(item.id)}', 1)">+</button>
+          </div>
+        </div>
+      `).join("");
+
+      openModal(`
+        <h2 style="font-size:19px; font-weight:800; margin-bottom:10px;">Tanlanganlar</h2>
+        ${rows}
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
+          <strong style="font-size:16px;">Jami:</strong>
+          <strong style="font-size:18px; color:var(--accent-bright);">${formatPrice(total)}</strong>
+        </div>
+      `);
+    }
+
+    function handleShareClick() {
+      const cleanUrl = window.location.href.split("#")[0];
+      openModal(`
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:6px;">Menyuni ulashish</h3>
+        <p style="font-size:13px; color:var(--text-secondary);">Havolani nusxalab mijozlarga yuboring:</p>
+        <div class="share-link-box">
+          <input type="text" class="share-link-input" value="${escapeHtml(cleanUrl)}" readonly id="shareUrlInput" />
+          <button type="button" class="copy-action-btn" onclick="copyShareLink()">Nusxalash</button>
+        </div>
+      `);
+    }
+
+    async function copyShareLink() {
+      const input = document.getElementById("shareUrlInput");
+      if (!input) return;
       try {
-        const res = await fetch(`${FIREBASE_DB_URL}/menu.json?t=${Date.now()}`, {
-          cache: "no-store"
-        });
-        if (!res.ok) return;
-        const data = await res.json();
-
-        if (data === null) {
-          await saveToFirebase();
-          return;
-        }
-
-        const remoteItems = Array.isArray(data.items) ? data.items : (data.empty ? [] : null);
-        if (remoteItems !== null) {
-          const remoteUpdated = Number(data.updatedAt || 0);
-          if (remoteUpdated >= lastUpdatedAt || remoteItems.length !== APP_DATA.items.length) {
-            APP_DATA.items = remoteItems;
-            lastUpdatedAt = remoteUpdated || Date.now();
-            persistLocalCache();
-            renderMenu();
-            updateCartBar();
-            if (isAdminUnlocked) renderAdminItemsList();
-            if (notify) showToast("Menyu sinxronlandi!");
-          }
-        }
-      } catch (err) {}
+        await navigator.clipboard.writeText(input.value);
+      } catch {
+        input.select();
+        document.execCommand("copy");
+      }
+      showToast("Havola nusxalandi!");
     }
 
-    function compressImageFile(file, maxSize = 420, quality = 0.72) {
+    function compressImageFile(file, maxSize = 540, quality = 0.62) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.onload = (ev) => {
+        reader.onload = () => {
           const img = new Image();
           img.onload = () => {
             let { width, height } = img;
             if (width > height && width > maxSize) {
               height = Math.round((height * maxSize) / width);
               width = maxSize;
-            } else if (height > maxSize) {
+            } else if (height >= width && height > maxSize) {
               width = Math.round((width * maxSize) / height);
               height = maxSize;
             }
+
             const canvas = document.createElement("canvas");
             canvas.width = width;
             canvas.height = height;
             const ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0, width, height);
-            resolve(canvas.toDataURL("image/jpeg", quality));
+
+            const dataUrl = canvas.toDataURL("image/jpeg", quality);
+            resolve(dataUrl);
           };
           img.onerror = reject;
-          img.src = ev.target.result;
+          img.src = reader.result;
         };
         reader.onerror = reject;
         reader.readAsDataURL(file);
@@ -1137,438 +1768,540 @@
     }
 
     function updatePhotoPreview() {
-      const thumb = document.getElementById("admPhotoPreview");
+      const preview = document.getElementById("admPhotoPreview");
       const label = document.getElementById("admPhotoLabel");
       const clearBtn = document.getElementById("admClearPhotoBtn");
-      const emojiVal = document.getElementById("admIcon").value.trim() || "☕";
+      const urlInput = document.getElementById("admPhotoUrl");
+      const iconVal = document.getElementById("admIcon").value || "☕";
+      const urlVal = urlInput ? urlInput.value.trim() : "";
+      const activeSrc = urlVal || state.draftPhotoData;
 
-      if (selectedPhotoDataUrl) {
-        thumb.innerHTML = `<img src="${selectedPhotoDataUrl}" alt="Rasm" />`;
-        label.textContent = "Galereyadan rasm tanlandi";
+      if (activeSrc) {
+        preview.innerHTML = `<img src="${escapeHtml(activeSrc)}" alt="Preview" />`;
+        if (urlVal) {
+          label.textContent = "Tashqi rasm havolasi (0 KB)";
+        } else {
+          const approxKb = Math.round((state.draftPhotoData.length * 3) / 4 / 1024);
+          label.textContent = `Siqilgan rasm (~${approxKb} KB)`;
+        }
         clearBtn.style.display = "inline-block";
       } else {
-        thumb.innerHTML = `<span>${emojiVal}</span>`;
+        preview.innerHTML = escapeHtml(iconVal);
         label.textContent = "Rasm tanlanmasa emoji ishlatiladi";
         clearBtn.style.display = "none";
       }
     }
 
     function clearSelectedPhoto() {
-      selectedPhotoDataUrl = "";
-      const fileInput = document.getElementById("admPhotoFile");
-      if (fileInput) fileInput.value = "";
+      state.draftPhotoData = "";
+      document.getElementById("admPhotoFile").value = "";
+      document.getElementById("admPhotoUrl").value = "";
       updatePhotoPreview();
     }
 
-    function copyTextFallback(text) {
-      const tempInput = document.createElement("textarea");
-      tempInput.value = text;
-      tempInput.style.position = "fixed";
-      tempInput.style.opacity = "0";
-      document.body.appendChild(tempInput);
-      tempInput.focus();
-      tempInput.select();
-      try { document.execCommand("copy"); } catch (err) {}
-      document.body.removeChild(tempInput);
+    function showAdminPanelUI() {
+      populateBrandForm();
+      renderAdminLists();
+      updatePhotoPreview();
+      updateStorageMeter();
+      document.getElementById("adminDrawer").classList.add("open");
     }
 
-    function closeModal() {
-      document.getElementById("modalBackdrop").classList.remove("open");
-    }
-
-    function openShareModal() {
-      const url = window.location.href;
-      const shareText = encodeURIComponent(APP_DATA.brand.name + " — " + APP_DATA.brand.tagline);
-      const encodedUrl = encodeURIComponent(url);
-
-      document.getElementById("modalContent").innerHTML = `
-        <div class="sheet-bar"></div>
-        <h3 style="font-size:19px; font-weight:800; margin-bottom:6px;">Menyuni ulashish</h3>
-        <p style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">
-          Havolani nusxalang yoki Telegram orqali yuboring:
-        </p>
-        <div class="share-link-box">
-          <input type="text" id="shareUrlInput" class="share-link-input" value="${url}" readonly />
-          <button type="button" class="copy-action-btn" id="manualCopyBtn">Nusxalash</button>
-        </div>
-        <a href="https://t.me/share/url?url=${encodedUrl}&text=${shareText}" target="_blank" rel="noopener"
-           style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:12px; padding:13px; border-radius:14px; background:#24A1DE; color:#fff; text-decoration:none; font-weight:700; font-size:14px;">
-          ✈️ Telegram orqali yuborish
-        </a>
-      `;
-      document.getElementById("modalBackdrop").classList.add("open");
-
-      document.getElementById("manualCopyBtn").addEventListener("click", () => {
-        const input = document.getElementById("shareUrlInput");
-        input.select();
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(url).then(() => showToast("Havola nusxalandi!"));
-        } else {
-          copyTextFallback(url);
-          showToast("Havola nusxalandi!");
-        }
-      });
-    }
-
-    async function handleShareClick(e) {
-      if (e) e.preventDefault();
-      const url = window.location.href;
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: APP_DATA.brand.name,
-            text: APP_DATA.brand.name + " — " + APP_DATA.brand.tagline,
-            url: url
-          });
-          return;
-        } catch (err) {
-          if (err && err.name === "AbortError") return;
-        }
-      }
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(url).catch(() => copyTextFallback(url));
-      } else {
-        copyTextFallback(url);
-      }
-      openShareModal();
-    }
-
-    function initBrand() {
-      const b = APP_DATA.brand;
-      document.title = b.name + " — Choy & Kofe Menyusi";
-      document.getElementById("bizName").textContent = b.name;
-      document.getElementById("bizLogo").textContent = b.logoText;
-      document.getElementById("bizTagline").textContent = b.tagline;
-      document.getElementById("bizAddress").textContent = b.address;
-      document.getElementById("btnCall").href = "tel:" + b.phone;
-      document.getElementById("btnTelegram").href = b.telegram;
-      document.getElementById("btnMap").href = b.mapUrl;
-      updateOpenClosedStatus();
-    }
-
-    function renderCategories() {
-      const bar = document.getElementById("categoryBar");
-      bar.innerHTML = APP_DATA.categories.map(cat => `
-        <button type="button" class="tab-btn ${cat.id === activeCategory ? "active" : ""}" data-id="${cat.id}">
-          <span>${cat.icon}</span>
-          <span>${cat.name}</span>
-        </button>
-      `).join("");
-
-      bar.querySelectorAll(".tab-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          activeCategory = btn.dataset.id;
-          const catObj = APP_DATA.categories.find(c => c.id === activeCategory);
-          document.getElementById("currentCategoryTitle").textContent =
-            activeCategory === "all" ? "Barcha ichimliklar" : catObj.name + " menyusi";
-          renderCategories();
-          renderMenu();
-        });
-      });
-    }
-
-    function renderMenu() {
-      const container = document.getElementById("menuContainer");
-      const filtered = APP_DATA.items.filter(item => {
-        const matchCat = activeCategory === "all" || item.category === activeCategory;
-        const matchQuery = item.title.toLowerCase().includes(searchQuery) ||
-                           (item.desc || "").toLowerCase().includes(searchQuery);
-        return matchCat && matchQuery;
-      });
-
-      document.getElementById("itemsCount").textContent = filtered.length + " ta";
-
-      if (!filtered.length) {
-        container.innerHTML = `<div style="text-align:center; padding:42px 20px; color:var(--text-secondary);">Hozircha menyu bo‘sh ☕</div>`;
+    function openAdminLoginModal() {
+      const now = Date.now();
+      if (state.loginLockUntil > now) {
+        const secLeft = Math.ceil((state.loginLockUntil - now) / 1000);
+        showToast(`Juda ko‘p urinish. ${secLeft} soniya kuting`);
         return;
       }
 
-      container.innerHTML = filtered.map(item => `
-        <article class="drink-card" onclick="openItemModal(${item.id})">
-          <div class="drink-visual">
-            ${item.badge ? `<span class="drink-tag">${item.badge}</span>` : ""}
-            ${renderVisualHtml(item, false)}
-          </div>
-          <div class="drink-info">
-            <h3 class="drink-name">${item.title}</h3>
-            <p class="drink-desc">${item.desc || ""}</p>
-            <div class="drink-bottom">
-              <span class="drink-price">${formatPrice(item.price)}</span>
-              <button type="button" class="plus-btn" onclick="event.stopPropagation(); addToCart(${item.id})" aria-label="Qo'shish">+</button>
-            </div>
-          </div>
-        </article>
-      `).join("");
-    }
-
-    function addToCart(id) {
-      selectedItems[id] = (selectedItems[id] || 0) + 1;
-      updateCartBar();
-      showToast("Tanlanganlarga qo‘shildi");
-    }
-
-    function updateCartBar() {
-      let count = 0;
-      let total = 0;
-      for (const [id, qty] of Object.entries(selectedItems)) {
-        const item = APP_DATA.items.find(i => i.id == id);
-        if (item && qty > 0) {
-          count += qty;
-          total += item.price * qty;
-        }
-      }
-      const bar = document.getElementById("floatingCart");
-      if (count > 0) {
-        document.getElementById("cartCount").textContent = count + " ta tanlandi";
-        document.getElementById("cartTotal").textContent = formatPrice(total);
-        bar.classList.add("show");
-      } else {
-        bar.classList.remove("show");
-      }
-    }
-
-    function openCartModal() {
-      const entries = Object.entries(selectedItems)
-        .map(([id, qty]) => ({ item: APP_DATA.items.find(i => i.id == id), qty }))
-        .filter(x => x.item && x.qty > 0);
-
-      if (!entries.length) return;
-      const total = entries.reduce((sum, x) => sum + x.item.price * x.qty, 0);
-
-      document.getElementById("modalContent").innerHTML = `
-        <div class="sheet-bar"></div>
-        <h3 style="font-size:19px; font-weight:800; margin-bottom:12px;">Tanlangan ichimliklar</h3>
-        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
-          ${entries.map(({ item, qty }) => `
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:14px; border:1px solid var(--border-subtle);">
-              <div>
-                <div style="font-weight:700;">${item.image ? "🖼️" : (item.icon || "☕")} ${item.title}</div>
-                <div style="font-size:12px; color:var(--text-secondary);">${qty} × ${formatPrice(item.price)}</div>
-              </div>
-              <strong style="color:var(--accent-bright);">${formatPrice(item.price * qty)}</strong>
-            </div>
-          `).join("")}
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid var(--border-subtle);">
-          <span style="font-weight:700;">Jami:</span>
-          <strong style="font-size:18px; color:var(--accent-bright);">${formatPrice(total)}</strong>
-        </div>
-      `;
-      document.getElementById("modalBackdrop").classList.add("open");
-    }
-
-    function openItemModal(id) {
-      const item = APP_DATA.items.find(i => i.id === id);
-      if (!item) return;
-      const visualBox = item.image
-        ? `<img src="${item.image}" alt="${item.title}" style="width:120px; height:120px; object-fit:cover; border-radius:24px; border:1px solid var(--border-gold); margin:0 auto 12px; display:block;" />`
-        : `<div style="text-align:center; font-size:58px; margin-bottom:10px;">${item.icon || "☕"}</div>`;
-
-      document.getElementById("modalContent").innerHTML = `
-        <div class="sheet-bar"></div>
-        ${visualBox}
-        <h2 style="font-size:21px; font-weight:800; margin-bottom:6px; text-align:center;">${item.title}</h2>
-        <p style="color:var(--text-secondary); font-size:14px; text-align:center; margin-bottom:20px;">${item.desc || ""}</p>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:16px; border-top:1px solid var(--border-subtle);">
-          <strong style="font-size:19px; color:var(--accent-bright);">${formatPrice(item.price)}</strong>
-          <button type="button" onclick="addToCart(${item.id}); closeModal();" style="padding:12px 24px; border-radius:14px; border:none; background:linear-gradient(135deg, var(--accent-bright), var(--accent)); color:#170e05; font-weight:800; font-size:14px; cursor:pointer;">Qo‘shish</button>
-        </div>
-      `;
-      document.getElementById("modalBackdrop").classList.add("open");
-    }
-
-    function openAdminAuthModal() {
-      document.getElementById("modalContent").innerHTML = `
-        <div class="sheet-bar"></div>
-        <h3 style="font-size:18px; font-weight:800; margin-bottom:6px;">Admin kirish</h3>
+      openModal(`
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:6px;">🔐 Admin panelga kirish</h3>
         <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">
-          Menyuni boshqarish uchun admin kodini kiriting:
+          Davom etish uchun admin parolini kiriting:
         </p>
-        <input type="password" id="adminCodeInput" class="admin-field" placeholder="Admin kodini kiriting..." />
-        <button type="button" class="copy-action-btn" style="width:100%;" id="adminLoginBtn">Kirish</button>
-      `;
-      document.getElementById("modalBackdrop").classList.add("open");
+        <form onsubmit="submitAdminLogin(event)">
+          <input
+            type="password"
+            id="adminLoginInput"
+            class="admin-field"
+            placeholder="Admin paroli..."
+            autocomplete="current-password"
+            required
+          />
+          <div id="adminLoginError" style="font-size:12px; color:#f87171; min-height:18px; margin-bottom:10px;"></div>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="admin-mini-btn" style="flex:1; padding:11px;" onclick="closeModal()">Bekor qilish</button>
+            <button type="submit" class="copy-action-btn" style="flex:1;" id="adminLoginSubmitBtn">Kirish</button>
+          </div>
+        </form>
+      `);
 
-      const submitCode = () => {
-        const val = document.getElementById("adminCodeInput").value.trim();
-        if (val === ADMIN_CODE) {
-          isAdminUnlocked = true;
-          document.getElementById("adminOpenBtn").classList.add("active-admin");
-          closeModal();
-          openAdminDrawer();
-          showToast("Admin panel ochildi");
-        } else {
-          showToast("Kod noto‘g‘ri!");
-        }
-      };
-
-      document.getElementById("adminLoginBtn").addEventListener("click", submitCode);
-      document.getElementById("adminCodeInput").addEventListener("keydown", (e) => {
-        if (e.key === "Enter") submitCode();
-      });
+      setTimeout(() => {
+        const input = document.getElementById("adminLoginInput");
+        if (input) input.focus();
+      }, 60);
     }
 
-    function openAdminDrawer() {
-      updatePhotoPreview();
-      renderAdminItemsList();
-      const drawer = document.getElementById("adminDrawer");
-      drawer.scrollTop = 0;
-      drawer.classList.add("open");
+    async function submitAdminLogin(e) {
+      if (e) e.preventDefault();
+      const now = Date.now();
+      const errEl = document.getElementById("adminLoginError");
+      const inputEl = document.getElementById("adminLoginInput");
+      const btnEl = document.getElementById("adminLoginSubmitBtn");
+
+      if (state.loginLockUntil > now) {
+        const secLeft = Math.ceil((state.loginLockUntil - now) / 1000);
+        if (errEl) errEl.textContent = `Vaqtincha bloklandi. ${secLeft} soniya kuting.`;
+        return;
+      }
+
+      const entered = inputEl ? inputEl.value : "";
+      if (!entered) return;
+
+      if (btnEl) btnEl.disabled = true;
+      try {
+        const [enteredHash, expectedHash] = await Promise.all([
+          hashSecret(entered),
+          resolveActiveAdminHash()
+        ]);
+
+        if (enteredHash === expectedHash) {
+          state.isAdminAuthenticated = true;
+          state.failedLoginAttempts = 0;
+          state.loginLockUntil = 0;
+          closeModal();
+          showAdminPanelUI();
+        } else {
+          state.failedLoginAttempts += 1;
+          if (state.failedLoginAttempts >= 5) {
+            state.loginLockUntil = Date.now() + 30000;
+            state.failedLoginAttempts = 0;
+            if (errEl) errEl.textContent = "5 marta xato kiritildi. 30 soniya kuting.";
+          } else {
+            if (errEl) errEl.textContent = `Parol noto‘g‘ri! (${5 - state.failedLoginAttempts} ta urinish qoldi)`;
+          }
+          if (inputEl) {
+            inputEl.value = "";
+            inputEl.focus();
+          }
+        }
+      } finally {
+        if (btnEl) btnEl.disabled = false;
+      }
+    }
+
+    async function updateAdminPassword() {
+      const p1 = document.getElementById("newAdminPassInput").value;
+      const p2 = document.getElementById("confirmAdminPassInput").value;
+
+      if (!p1 || p1.length < 6) {
+        showToast("Parol kamida 6 ta belgidan iborat bo‘lsin");
+        return;
+      }
+      if (p1 !== p2) {
+        showToast("Parollar bir-biriga mos kelmadi");
+        return;
+      }
+
+      const newHash = await hashSecret(p1);
+      setCachedAdminHash(newHash);
+      document.getElementById("newAdminPassInput").value = "";
+      document.getElementById("confirmAdminPassInput").value = "";
+
+      if (FIREBASE_DB_URL && navigator.onLine) {
+        try {
+          const res = await fetch(`${FIREBASE_DB_URL}/adminPassHash.json`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newHash)
+          });
+          if (!res.ok) throw new Error("Parolni bazaga yozish xatosi");
+          showToast("Admin paroli bazada yangilandi!");
+          return;
+        } catch (err) {
+          console.error(err);
+        }
+      }
+      showToast("Parol ushbu qurilma keshida saqlandi");
+    }
+
+    function openAdminFromHashIfRequested() {
+      const isAdminRoute =
+        window.location.hash === "#admin" ||
+        new URLSearchParams(window.location.search).get("admin") === "1";
+
+      if (!isAdminRoute) return;
+
+      if (!state.isAdminAuthenticated) {
+        openAdminLoginModal();
+      } else {
+        showAdminPanelUI();
+      }
+    }
+
+    function lockAdminSession() {
+      state.isAdminAuthenticated = false;
+      closeAdminDrawer();
+      if (window.location.hash === "#admin") {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+      showToast("Admin sessiyasi yopildi");
     }
 
     function closeAdminDrawer() {
       document.getElementById("adminDrawer").classList.remove("open");
     }
 
-    async function addMenuItemFromAdmin() {
-      const title = document.getElementById("admTitle").value.trim();
-      const price = parseInt(document.getElementById("admPrice").value, 10);
-      const category = document.getElementById("admCategory").value;
-      const icon = document.getElementById("admIcon").value.trim() || "☕";
-      const badge = document.getElementById("admBadge").value.trim();
-      const desc = document.getElementById("admDesc").value.trim() || "Maxsus tayyorlangan ichimlik.";
+    function populateBrandForm() {
+      const b = state.data.brand;
+      document.getElementById("brandNameInput").value = b.name || "";
+      document.getElementById("brandLogoUrlInput").value = b.logoUrl || "";
+      document.getElementById("brandLogoTextInput").value = b.logoText || "☕";
+      document.getElementById("brandOpenInput").value = b.openHour ?? 9;
+      document.getElementById("brandCloseInput").value = b.closeHour ?? 23;
+      document.getElementById("brandPhoneInput").value = b.phone || "";
+      document.getElementById("brandTelegramInput").value = b.telegramUrl || "";
+      document.getElementById("brandMapInput").value = b.mapUrl || "";
+    }
 
-      if (!title || isNaN(price) || price <= 0) {
-        showToast("Nom va to‘g‘ri narx kiriting!");
+    async function saveBrandSettings() {
+      state.data.brand = {
+        ...state.data.brand,
+        name: document.getElementById("brandNameInput").value.trim() || "Abdulla",
+        logoUrl: document.getElementById("brandLogoUrlInput").value.trim(),
+        logoText: document.getElementById("brandLogoTextInput").value.trim() || "☕",
+        tagline: "",
+        address: "",
+        openHour: Number(document.getElementById("brandOpenInput").value ?? 9),
+        closeHour: Number(document.getElementById("brandCloseInput").value ?? 23),
+        phone: document.getElementById("brandPhoneInput").value.trim(),
+        telegramUrl: document.getElementById("brandTelegramInput").value.trim(),
+        mapUrl: document.getElementById("brandMapInput").value.trim()
+      };
+      renderBrand();
+      await pushToFirebase(state.data);
+      showToast("Kafe ma’lumotlari saqlandi!");
+    }
+
+    async function addCategoryFromAdmin() {
+      const nameInput = document.getElementById("newCatName");
+      const iconInput = document.getElementById("newCatIcon");
+      const name = nameInput.value.trim();
+      const icon = iconInput.value.trim() || "🍽️";
+
+      if (!name) {
+        showToast("Bo‘lim nomini kiriting!");
         return;
       }
 
-      const nextId = APP_DATA.items.reduce((max, i) => Math.max(max, Number(i.id) || 0), 0) + 1;
-      APP_DATA.items.push({
-        id: nextId,
-        category,
-        title,
-        desc,
-        price,
-        icon,
-        image: selectedPhotoDataUrl || "",
-        badge
+      const id = "cat-" + Date.now();
+      state.data.categories.push({ id, name, icon });
+      nameInput.value = "";
+      renderCategories();
+      renderAdminLists();
+      await pushToFirebase(state.data);
+      showToast("Yangi bo‘lim qo‘shildi!");
+    }
+
+    async function deleteCategoryFromAdmin(catId) {
+      if (catId === "all") return;
+      state.data.categories = state.data.categories.filter(c => c.id !== catId);
+      const fallbackCat = state.data.categories.find(c => c.id !== "all")?.id || "all";
+      state.data.items.forEach(item => {
+        if (item.category === catId) item.category = fallbackCat;
       });
+      if (state.activeCategory === catId) state.activeCategory = "all";
+      renderAll();
+      await pushToFirebase(state.data);
+      showToast("Bo‘lim o‘chirildi");
+    }
 
-      renderMenu();
-      renderAdminItemsList();
-      await saveToFirebase();
+    function startEditItem(itemId) {
+      const item = state.data.items.find(i => i.id === itemId);
+      if (!item) return;
 
+      state.editingItemId = item.id;
+      const isHttpUrl = /^https?:\/\//i.test(item.photoData || "");
+      state.draftPhotoData = isHttpUrl ? "" : (item.photoData || "");
+
+      document.getElementById("admFormTitle").textContent = "Mahsulotni tahrirlash";
+      document.getElementById("admCancelEditBtn").style.display = "inline-block";
+      document.getElementById("admSaveItemBtn").textContent = "O‘zgarishni saqlash";
+
+      document.getElementById("admTitle").value = item.title;
+      document.getElementById("admPrice").value = item.price;
+      document.getElementById("admCategory").value = item.category;
+      document.getElementById("admPhotoUrl").value = isHttpUrl ? item.photoData : "";
+      document.getElementById("admIcon").value = item.icon || "☕";
+      document.getElementById("admBadge").value = item.badge || "";
+      document.getElementById("admDesc").value = item.desc || "";
+      updatePhotoPreview();
+    }
+
+    function cancelEditItem() {
+      state.editingItemId = null;
+      state.draftPhotoData = "";
+      document.getElementById("admFormTitle").textContent = "Yangi mahsulot qo‘shish";
+      document.getElementById("admCancelEditBtn").style.display = "none";
+      document.getElementById("admSaveItemBtn").textContent = "+ Menyuga qo‘shish";
       document.getElementById("admTitle").value = "";
       document.getElementById("admPrice").value = "";
+      document.getElementById("admPhotoFile").value = "";
+      document.getElementById("admPhotoUrl").value = "";
+      document.getElementById("admIcon").value = "☕";
       document.getElementById("admBadge").value = "";
       document.getElementById("admDesc").value = "";
-      clearSelectedPhoto();
-      showToast("Barcha telefonlarda yangilandi!");
+      updatePhotoPreview();
     }
 
-    async function editItemPriceFromAdmin(id) {
-      const item = APP_DATA.items.find(i => i.id === id);
-      if (!item) return;
-      const raw = prompt(`"${item.title}" uchun yangi narxni kiriting:`, item.price);
-      if (raw === null) return;
-      const nextPrice = parseInt(raw.replace(/\s+/g, ""), 10);
-      if (isNaN(nextPrice) || nextPrice <= 0) {
-        showToast("Narx noto‘g‘ri kiritildi!");
+    async function saveMenuItemFromAdmin() {
+      const title = document.getElementById("admTitle").value.trim();
+      const price = Math.max(0, Number(document.getElementById("admPrice").value || 0));
+      const category = document.getElementById("admCategory").value;
+      const photoUrl = document.getElementById("admPhotoUrl").value.trim();
+      const icon = document.getElementById("admIcon").value.trim() || "☕";
+      const badge = document.getElementById("admBadge").value.trim();
+      const desc = document.getElementById("admDesc").value.trim();
+
+      if (!title) {
+        showToast("Mahsulot nomini kiriting!");
         return;
       }
-      item.price = nextPrice;
-      renderMenu();
-      renderAdminItemsList();
-      await saveToFirebase();
-      showToast("Narx barcha qurilmalarda yangilandi!");
+
+      const photoData = photoUrl || state.draftPhotoData || "";
+
+      if (state.editingItemId) {
+        const idx = state.data.items.findIndex(i => i.id === state.editingItemId);
+        if (idx !== -1) {
+          state.data.items[idx] = {
+            ...state.data.items[idx],
+            title,
+            price,
+            category,
+            icon,
+            photoData,
+            badge,
+            desc
+          };
+        }
+        cancelEditItem();
+        renderMenu();
+        renderAdminLists();
+        await pushToFirebase(state.data);
+        showToast("Mahsulot yangilandi!");
+      } else {
+        const newItem = {
+          id: "item-" + Date.now(),
+          title,
+          price,
+          category,
+          icon,
+          photoData,
+          badge,
+          desc,
+          available: true
+        };
+        state.data.items.push(newItem);
+        cancelEditItem();
+        renderMenu();
+        renderAdminLists();
+        await pushToFirebase(state.data);
+        showToast("Yangi mahsulot qo‘shildi!");
+      }
     }
 
-    async function deleteItemFromAdmin(id) {
-      APP_DATA.items = APP_DATA.items.filter(i => i.id !== id);
-      delete selectedItems[id];
+    async function toggleItemAvailability(itemId) {
+      const item = state.data.items.find(i => i.id === itemId);
+      if (!item) return;
+      item.available = !item.available;
+      if (!item.available && state.cart[itemId]) {
+        delete state.cart[itemId];
+        renderCartDock();
+      }
       renderMenu();
-      updateCartBar();
-      renderAdminItemsList();
-      await saveToFirebase();
+      renderAdminLists();
+      await pushToFirebase(state.data);
+      showToast(item.available ? "Mavjud qilib belgilandi" : "Tugagan qilib belgilandi");
+    }
+
+    async function deleteMenuItem(itemId) {
+      state.data.items = state.data.items.filter(i => i.id !== itemId);
+      if (state.cart[itemId]) {
+        delete state.cart[itemId];
+        renderCartDock();
+      }
+      if (state.editingItemId === itemId) cancelEditItem();
+      renderMenu();
+      renderAdminLists();
+      await pushToFirebase(state.data);
       showToast("Mahsulot o‘chirildi");
     }
 
-    async function resetDefaultMenu() {
-      APP_DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
-      selectedItems = {};
-      renderMenu();
-      updateCartBar();
-      renderAdminItemsList();
-      await saveToFirebase();
-      showToast("Asl menyu tiklandi");
-    }
+    function renderAdminLists() {
+      const catList = document.getElementById("adminCategoriesList");
+      const itemsList = document.getElementById("adminItemsList");
 
-    function renderAdminItemsList() {
-      const listEl = document.getElementById("adminItemsList");
-      if (!listEl) return;
-      if (!APP_DATA.items.length) {
-        listEl.innerHTML = `<div style="font-size:12.5px; color:var(--text-secondary); padding:8px 0;">Hozircha mahsulot yo‘q</div>`;
-        return;
-      }
-      listEl.innerHTML = APP_DATA.items.map(item => `
+      catList.innerHTML = state.data.categories
+        .filter(c => c.id !== "all")
+        .map(cat => `
+          <div class="admin-row-item">
+            <span>${escapeHtml(cat.icon)} <strong>${escapeHtml(cat.name)}</strong></span>
+            <button type="button" class="admin-mini-btn danger" onclick="deleteCategoryFromAdmin('${escapeHtml(cat.id)}')">O‘chirish</button>
+          </div>
+        `).join("") || `<div style="font-size:12px; color:var(--text-secondary);">Qo‘shimcha bo‘lim yo‘q</div>`;
+
+      itemsList.innerHTML = state.data.items.map(item => `
         <div class="admin-row-item">
           <div style="min-width:0;">
-            <div style="font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${item.image ? "🖼️" : (item.icon || "☕")} ${item.title}</div>
-            <div style="font-size:11.5px; color:var(--accent-bright);">${formatPrice(item.price)}</div>
+            <div style="font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+              ${escapeHtml(item.icon)} ${escapeHtml(item.title)}
+            </div>
+            <div style="font-size:11.5px; color:var(--text-secondary);">
+              ${formatPrice(item.price)} • ${item.available ? "Mavjud" : "Tugagan"}
+            </div>
           </div>
-          <div style="display:flex; gap:6px; flex-shrink:0;">
-            <button type="button" class="admin-mini-btn" onclick="editItemPriceFromAdmin(${item.id})">Narx</button>
-            <button type="button" class="admin-mini-btn danger" onclick="deleteItemFromAdmin(${item.id})">O‘chir</button>
+          <div class="admin-row-actions">
+            <button type="button" class="admin-mini-btn" onclick="toggleItemAvailability('${escapeHtml(item.id)}')">
+              ${item.available ? "Tugadi" : "Bor"}
+            </button>
+            <button type="button" class="admin-mini-btn" onclick="startEditItem('${escapeHtml(item.id)}')">Tahrir</button>
+            <button type="button" class="admin-mini-btn danger" onclick="deleteMenuItem('${escapeHtml(item.id)}')">✕</button>
           </div>
         </div>
-      `).join("");
+      `).join("") || `<div style="font-size:12px; color:var(--text-secondary);">Mahsulotlar yo‘q</div>`;
     }
 
-    document.getElementById("admPhotoFile").addEventListener("change", async (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
+    async function exportMenuJson() {
+      const text = JSON.stringify(state.data, null, 2);
       try {
-        selectedPhotoDataUrl = await compressImageFile(file);
-        updatePhotoPreview();
-        showToast("Rasm yuklandi");
+        await navigator.clipboard.writeText(text);
+        showToast("JSON nusxa buferga ko‘chirildi!");
+      } catch {
+        openModal(`
+          <h3 style="font-size:17px; font-weight:800; margin-bottom:8px;">Menyu JSON</h3>
+          <textarea class="share-link-input" style="width:100%; height:180px; font-family:monospace;" readonly>${escapeHtml(text)}</textarea>
+        `);
+      }
+    }
+
+    async function importMenuJsonFromFile(file) {
+      try {
+        const text = await file.text();
+        const parsed = JSON.parse(text);
+        state.data = normalizeMenuData(parsed);
+        state.activeCategory = "all";
+        state.cart = {};
+        renderCartDock();
+        renderAll();
+        populateBrandForm();
+        renderAdminLists();
+        await pushToFirebase(state.data);
+        showToast("JSON menyu muvaffaqiyatli yuklandi!");
       } catch (err) {
-        showToast("Rasmni o‘qishda xatolik");
+        console.error("JSON import xatosi:", err);
+        showToast("JSON fayl formati noto‘g‘ri!");
       }
-    });
+    }
 
-    document.getElementById("admIcon").addEventListener("input", () => {
-      if (!selectedPhotoDataUrl) updatePhotoPreview();
-    });
+    async function resetDefaultMenu() {
+      if (!window.confirm("Menyuni asl holatiga qaytarmoqchimisiz?")) return;
+      state.data = cloneData(DEFAULT_DATA);
+      state.activeCategory = "all";
+      state.cart = {};
+      cancelEditItem();
+      renderCartDock();
+      renderAll();
+      populateBrandForm();
+      renderAdminLists();
+      await pushToFirebase(state.data);
+      showToast("Asl menyu tiklandi!");
+    }
 
-    document.getElementById("adminOpenBtn").addEventListener("click", () => {
-      if (isAdminUnlocked) {
-        const drawer = document.getElementById("adminDrawer");
-        if (drawer.classList.contains("open")) closeAdminDrawer();
-        else openAdminDrawer();
-      } else {
-        openAdminAuthModal();
-      }
-    });
-
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const html = document.documentElement;
-      const isDark = html.getAttribute("data-theme") !== "light";
-      html.setAttribute("data-theme", isDark ? "light" : "dark");
-      document.getElementById("themeToggle").textContent = isDark ? "🌙" : "☀️";
-    });
-
-    document.getElementById("searchInput").addEventListener("input", (e) => {
-      searchQuery = e.target.value.trim().toLowerCase();
+    function renderAll() {
+      renderBrand();
+      renderCategories();
       renderMenu();
-    });
+      updateStorageMeter();
+    }
 
-    document.getElementById("modalBackdrop").addEventListener("click", (e) => {
-      if (e.target.id === "modalBackdrop") closeModal();
-    });
+    function initEvents() {
+      document.getElementById("themeToggle").addEventListener("click", toggleTheme);
 
-    document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) syncFromFirebase(false);
-    });
-    window.addEventListener("focus", () => syncFromFirebase(false));
+      document.getElementById("searchInput").addEventListener("input", e => {
+        state.searchQuery = e.target.value || "";
+        renderMenu();
+      });
 
-    initBrand();
-    renderCategories();
-    renderMenu();
-    updateCartBar();
-    syncFromFirebase(false);
-    setInterval(updateOpenClosedStatus, 30000);
-    setInterval(() => syncFromFirebase(false), 3000);
+      document.getElementById("modalBackdrop").addEventListener("click", e => {
+        if (e.target.id === "modalBackdrop") closeModal();
+      });
+
+      document.getElementById("admPhotoFile").addEventListener("change", async e => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        try {
+          const compressed = await compressImageFile(file);
+          const approxKb = Math.round((compressed.length * 3) / 4 / 1024);
+          if (approxKb > 180) {
+            showToast("Rasm hajmi katta (~" + approxKb + " KB), kichikroq rasm tanlang");
+            e.target.value = "";
+            return;
+          }
+          state.draftPhotoData = compressed;
+          document.getElementById("admPhotoUrl").value = "";
+          updatePhotoPreview();
+          showToast(`Rasm tayyorlandi (~${approxKb} KB)`);
+        } catch {
+          showToast("Rasmni o‘qib bo‘lmadi");
+        }
+      });
+
+      document.getElementById("admPhotoUrl").addEventListener("input", updatePhotoPreview);
+      document.getElementById("admIcon").addEventListener("input", updatePhotoPreview);
+
+      document.getElementById("importJsonFile").addEventListener("change", e => {
+        const file = e.target.files?.[0];
+        if (file) {
+          importMenuJsonFromFile(file);
+          e.target.value = "";
+        }
+      });
+
+      window.addEventListener("hashchange", openAdminFromHashIfRequested);
+      window.addEventListener("online", () => {
+        state.consecutiveSyncErrors = 0;
+        checkAndSyncMenu(true);
+      });
+      window.addEventListener("offline", () => activateFallbackCache(false));
+      window.addEventListener("focus", () => checkAndSyncMenu(false));
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) checkAndSyncMenu(false);
+      });
+    }
+
+    function initApp() {
+      try {
+        const savedTheme = localStorage.getItem(THEME_KEY);
+        if (savedTheme) applyTheme(savedTheme);
+      } catch {}
+
+      const cached = loadLocalCache();
+      if (cached) {
+        state.data = cached.data;
+        if (cached.version) state.knownVersion = cached.version;
+      }
+
+      initEvents();
+      renderAll();
+      openAdminFromHashIfRequested();
+      checkAndSyncMenu(true);
+
+      setInterval(updateWorkStatus, 60000);
+      setInterval(() => checkAndSyncMenu(false), VERSION_CHECK_INTERVAL_MS);
+    }
+
+    initApp();
   </script>
 </body>
 </html>
